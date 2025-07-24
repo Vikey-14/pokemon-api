@@ -2,13 +2,14 @@ from fastapi import APIRouter, HTTPException, status, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from datetime import datetime, timedelta
+from config import settings
 from jose import jwt, JWTError, ExpiredSignatureError
 from custom_logger import info_logger, error_logger  # ✅ Import both loggers
 import uuid
 
 # 🔐 Secret key and algorithm for JWT
-SECRET_KEY = "pikachu-secret-key"
-ALGORITHM = "HS256"
+SECRET_KEY = settings.SECRET_KEY
+ALGORITHM = settings.JWT_ALGORITHM
 
 # 🧠 In-memory store for refresh tokens with expiry
 refresh_token_store = {}
