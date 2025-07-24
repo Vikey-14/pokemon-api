@@ -1,0 +1,40 @@
+2025-07-19 11:49:49 - GET /docs | Status: 200 | Success: True | Took: 0.0095s
+2025-07-19 11:49:50 - GET /openapi.json | Status: 200 | Success: True | Took: 0.0477s
+2025-07-19 11:50:28 - POST /upload/image | Status: 200 | Success: True | Took: 0.007s
+2025-07-19 11:51:50 - GET /upload/image | Status: 405 | Success: False | Took: 0.0s
+2025-07-19 11:51:50 - GET /favicon.ico | Status: 404 | Success: False | Took: 0.0s
+2025-07-19 11:53:49 - GET /uploads/images/bulbasaur.png | Status: 200 | Success: True | Took: 0.1407s
+2025-07-19 12:01:47 - GET /docs | Status: 200 | Success: True | Took: 0.001s
+2025-07-19 12:01:48 - GET /openapi.json | Status: 200 | Success: True | Took: 0.0281s
+2025-07-19 12:03:27 - GET /gallery | Status: 200 | Success: True | Took: 0.0s
+2025-07-19 12:08:43 - GET /gallery | Status: 200 | Success: True | Took: 0.0153s
+2025-07-19 12:08:43 - GET /uploads/images/bulbasaur.png | Status: 200 | Success: True | Took: 0.2061s
+2025-07-21 23:58:00 - GET /docs | Status: 200 | Success: True | Took: 0.002s
+2025-07-21 23:58:10 - GET /docs | Status: 200 | Success: True | Took: 0.0s
+2025-07-21 23:58:12 - GET /openapi.json | Status: 200 | Success: True | Took: 0.04s
+2025-07-21 23:58:58 - POST /login | Status: 200 | Success: True | Took: 0.041s
+2025-07-22 00:01:56 - POST /login | Status: 422 | Success: False | Took: 0.04s
+2025-07-22 00:03:06 - POST /login | Status: 422 | Success: False | Took: 0.002s
+2025-07-22 00:03:10 - POST /login | Status: 422 | Success: False | Took: 0.002s
+2025-07-22 00:03:24 - POST /login | Status: 422 | Success: False | Took: 0.004s
+2025-07-22 00:03:40 - POST /login | Status: 422 | Success: False | Took: 0.001s
+2025-07-22 00:05:33 - GET /docs | Status: 200 | Success: True | Took: 0.01s
+2025-07-22 00:05:34 - GET /openapi.json | Status: 200 | Success: True | Took: 0.018s
+2025-07-22 00:05:49 - POST /login | Status: 401 | Success: False | Took: 0.022s
+2025-07-22 00:06:56 - POST /login | Status: 200 | Success: True | Took: 0.013s
+2025-07-22 00:10:05 - GET /trainer/profile | Status: 401 | Success: False | Took: 0.023s
+2025-07-22 00:10:43 - GET /team/ | Status: 200 | Success: True | Took: 0.066s
+2025-07-22 00:16:47 - GET /trainer/profile | Status: 401 | Success: False | Took: 0.011s
+2025-07-22 00:17:26 - POST /login | Status: 200 | Success: True | Took: 0.025s
+2025-07-22 00:25:49 - GET /docs | Status: 200 | Success: True | Took: 0.0s
+2025-07-22 00:25:49 - GET /openapi.json | Status: 200 | Success: True | Took: 0.0431s
+2025-07-22 00:28:03 - POST /auth/login | Status: 200 | Success: True | Took: 0.07s
+2025-07-22 00:29:01 - GET /auth/whoami | Status: 200 | Success: True | Took: 0.012s
+[2025-07-24 04:03:11] GET /docs | 👤 Unknown | 📍 172.18.0.1 | Status: 200 | ⏱️ 0.0427s
+[2025-07-24 04:03:12] GET /openapi.json | 👤 Unknown | 📍 172.18.0.1 | Status: 200 | ⏱️ 0.8635s
+[2025-07-24 04:03:15] GET /redoc | 👤 Unknown | 📍 172.18.0.1 | Status: 200 | ⏱️ 0.0191s
+[2025-07-24 04:03:16] GET /openapi.json | 👤 Unknown | 📍 172.18.0.1 | Status: 200 | ⏱️ 0.0045s
+[2025-07-24 04:12:24] GET /docs | 👤 Unknown | 📍 172.18.0.1 | Status: 200 | ⏱️ 0.0066s
+[2025-07-24 04:12:25] GET /openapi.json | 👤 Unknown | 📍 172.18.0.1 | Status: 200 | ⏱️ 0.2516s
+[2025-07-24 04:13:04] GET /docs | 👤 Unknown | 📍 172.18.0.1 | Status: 200 | ⏱️ 0.0375s
+[2025-07-24 04:13:04] GET /openapi.json | 👤 Unknown | 📍 172.18.0.1 | Status: 200 | ⏱️ 0.0258s
