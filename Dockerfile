@@ -16,7 +16,8 @@ RUN pip install --no-cache-dir --upgrade pip && pip install -r requirements.txt
 COPY main.py .
 COPY config.py .
 COPY core_app.py .
-COPY custom_logger.py .           
+COPY custom_logger.py .  
+COPY logger_middleware.py .         
 COPY auth/ auth/
 COPY utils/ utils/
 COPY static/ static/
