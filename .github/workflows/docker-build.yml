@@ -31,13 +31,12 @@ jobs:
         echo "TOKEN_EXPIRY_MINUTES=${{ secrets.TOKEN_EXPIRY_MINUTES }}" >> .env.prod
 
     - name: 📦 Prepare clean Docker build context
-      shell: bash
       run: |
         mkdir build
-        shopt -s extglob
-        cp -r !(build|.git|.github) build/
-        cp .env.prod build/
-        cp .dockerignore Dockerfile build/
+        rsync -av --exclude='build' --exclude='venv' --exclude='.git' --exclude='.github' \
+                  --exclude='__pycache__' --exclude='.pytest_cache' \
+                  . ./build/
+        cp .env.prod Dockerfile .dockerignore ./build/
 
     - name: 🏗️ Build Docker image from ./build context
       run: |
