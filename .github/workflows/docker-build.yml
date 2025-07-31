@@ -1,4 +1,4 @@
-name: 🐳 Docker Build
+name: 🐳 Docker Build & Push
 
 on:
   push:
@@ -23,9 +23,11 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: 🏗️ Build Docker image
+    - name: 🏗️ Build Docker image (with .env.prod)
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/pokecenter:latest .
+        docker build \
+          --build-arg ENV_FILE=.env.prod \
+          -t ${{ secrets.DOCKER_USERNAME }}/pokecenter:latest .
 
     - name: 🚀 Push Docker image to DockerHub
       run: |
