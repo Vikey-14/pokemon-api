@@ -1,15 +1,11 @@
 # ------------------------------------------------------------------
-# 🔐 Secrets (Never include real local env files)
+# 🔐 Secrets (never include real local env files)
 # ------------------------------------------------------------------
 
-.env                  # ⛔ Ignore default local .env
-!.env.prod            # ✅ Allow production env for Docker builds
-!.env.prod.ci         # ✅ Allow CI env used in GitHub Actions
-!.env.example         # ✅ Allow example template for documentation
-
-# ⚠️ DO NOT use this — would block required files
-# .env.*              # ❌ Would block .env.prod / .env.prod.ci
-
+.env
+!*.env.prod
+!*.env.prod.ci
+!*.env.example
 
 # ------------------------------------------------------------------
 # 🧪 Tests & Coverage
@@ -36,17 +32,18 @@ __pycache__/
 # 📁 Runtime Data & Uploads (Allow specific files before blocking)
 # ------------------------------------------------------------------
 
-# ✅ Allow only essential runtime files
-!data/pokedex.json
-!data/team.json
-!logs/.gitkeep
-
-# ❌ Then block everything else in those folders
 logs/
 uploads/
 gallery/
-data/
 *.log
+
+# ❌ If data/ is excluded, nothing inside is copied — even if Git tracks it
+# ✅ FIX: allow specific files after excluding the folder
+
+!data/
+!data/pokedex.json
+!data/team.json
+!logs/.gitkeep
 
 
 # ------------------------------------------------------------------
@@ -95,3 +92,4 @@ docker-compose.override.yml
 *.zip
 *.tar
 *.gz
+
