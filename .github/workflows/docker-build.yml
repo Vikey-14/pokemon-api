@@ -23,6 +23,13 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: 🧪 Generate .env.prod from GitHub Secrets
+      run: |
+        echo "APP_ENV=${{ secrets.APP_ENV }}" >> .env.prod
+        echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env.prod
+        echo "JWT_ALGORITHM=${{ secrets.JWT_ALGORITHM }}" >> .env.prod
+        echo "TOKEN_EXPIRY_MINUTES=${{ secrets.TOKEN_EXPIRY_MINUTES }}" >> .env.prod
+
     - name: 🏗️ Build Docker image (with .env.prod)
       run: |
         docker build \
