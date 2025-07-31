@@ -4,7 +4,8 @@
 .env
 .env.*
 !.env.example
-!.env.test  # ✅ Allow .env.test to be committed for CI
+!.env.test   # ✅ Allow .env.test to be committed for CI
+!.env.prod   # ✅ Allow .env.prod to be committed for Docker build
 
 # ------------------------------------------------------------------------------
 # 🧪 Runtime / Upload / Generated Folders
