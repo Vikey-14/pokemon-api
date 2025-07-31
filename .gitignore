@@ -1,11 +1,17 @@
 # ------------------------------------------------------------------------------
 # 🔒 Sensitive Environments and Secrets
 # ------------------------------------------------------------------------------
+
+# ❗ Ignore the default .env file
 .env
-.env.*
-!.env.example
-!.env.test   # ✅ Allow .env.test to be committed for CI
-!.env.prod   # ✅ Allow .env.prod to be committed for Docker build
+
+# ⚠️ This wildcard blocks ALL env files, including .env.prod — must come AFTER allowlist
+!.env.prod      # ✅ Include for Docker builds
+!.env.example   # ✅ Include for sharing templates
+!.env.test      # ✅ Include for testing/CI
+
+# 🔥 Now block all other unlisted env files
+.env.*          # ⛔ Must come AFTER the allowlist above
 
 # ------------------------------------------------------------------------------
 # 🧪 Runtime / Upload / Generated Folders
@@ -89,14 +95,10 @@ __pypackages__/
 # ------------------------------------------------------------------------------
 # 👓 IDEs / Editors
 # ------------------------------------------------------------------------------
-# VS Code
 .vscode/
-# PyCharm
 .idea/
-# Spyder
 .spyderproject
 .spyproject
-# Rope
 .ropeproject
 
 # ------------------------------------------------------------------------------
