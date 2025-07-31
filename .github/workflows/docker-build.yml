@@ -1,49 +1,46 @@
-name: 🐳 Docker Build & Push
+name: 🚀 Docker Build & Push
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 🛎️ Checkout repository
-      uses: actions/checkout@v4
+    - name: 🧾 Checkout code
+      uses: actions/checkout@v3
 
-    - name: 🧱 Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-
-    - name: 🔐 Log in to DockerHub
-      uses: docker/login-action@v3
+    - name: 🐍 Set up Python (optional, only if needed)
+      uses: actions/setup-python@v4
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        python-version: "3.12"
 
-    - name: 🧪 Generate .env.prod from GitHub Secrets
+    - name: 📦 Prepare Docker Build Folder (Safe Copy)
       run: |
-        echo "APP_ENV=${{ secrets.APP_ENV }}" >> .env.prod
-        echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env.prod
-        echo "JWT_ALGORITHM=${{ secrets.JWT_ALGORITHM }}" >> .env.prod
-        echo "TOKEN_EXPIRY_MINUTES=${{ secrets.TOKEN_EXPIRY_MINUTES }}" >> .env.prod
+        mkdir -p build
+        rsync -av --exclude=build --exclude=.git --exclude=__pycache__/ . build/
 
-    - name: 📦 Prepare clean Docker build context
-      run: |
-        mkdir build
-        rsync -av --exclude='build' --exclude='venv' --exclude='.git' --exclude='.github' \
-                  --exclude='__pycache__' --exclude='.pytest_cache' \
-                  . ./build/
-        cp .env.prod Dockerfile .dockerignore ./build/
-
-    - name: 🏗️ Build Docker image from ./build context
+    - name: 🐳 Build Docker image with secrets as build args
       run: |
         docker build \
-          --build-arg ENV_FILE=.env.prod \
-          -t ${{ secrets.DOCKER_USERNAME }}/pokecenter:latest ./build
+          --build-arg SECRET_KEY="${{ secrets.SECRET_KEY }}" \
+          --build-arg JWT_ALGORITHM="${{ secrets.JWT_ALGORITHM }}" \
+          --build-arg TOKEN_EXPIRY_MINUTES="${{ secrets.TOKEN_EXPIRY_MINUTES }}" \
+          --build-arg APP_ENV="${{ secrets.APP_ENV }}" \
+          -t pokecenter-app:latest build/
 
-    - name: 🚀 Push Docker image to DockerHub
+    - name: 📤 Push Docker image to Docker Hub (optional)
+      if: false  # change to `true` to enable push
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/pokecenter:latest
+        echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+        docker tag pokecenter-app:latest $DOCKER_USERNAME/pokecenter-app:latest
+        docker push $DOCKER_USERNAME/pokecenter-app:latest
+
+    - name: ✅ Cleanup
+      run: rm -rf build/

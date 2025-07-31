@@ -1,33 +1,45 @@
-# 🐍 Use a minimal, official Python base image for production
+# 🐍 Use a minimal, official Python base image
 FROM python:3.11-slim
 
-# 🧼 Prevent Python from generating .pyc files (cleaner) and ensure real-time logs
+# ✅ Clean Python behavior
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-
-# 🔐 Optional: Set a default ENV (FastAPI can read this if needed)
 ENV ENV=production
 
 # 📁 Set working directory inside container
 WORKDIR /app
 
-# 📦 Copy requirements file first (leverage layer caching)
+# 📦 Copy and install dependencies first (caching layer)
 COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && pip install -r requirements.txt
 
-# 🛠 Install dependencies
-RUN pip install --upgrade pip && pip install -r requirements.txt
+# 🔐 Inject environment variables from GitHub Actions or use fallback from file
+# ARGs (can be passed from GitHub Actions)
+ARG SECRET_KEY
+ARG JWT_ALGORITHM
+ARG TOKEN_EXPIRY_MINUTES
+ARG APP_ENV
 
-# ❌ REMOVE build ARG (NOT supported in COPY)
-# ARG ENV_FILE=.env.prod
+# Set ENV vars so FastAPI can access them
+ENV SECRET_KEY=${SECRET_KEY}
+ENV JWT_ALGORITHM=${JWT_ALGORITHM}
+ENV TOKEN_EXPIRY_MINUTES=${TOKEN_EXPIRY_MINUTES}
+ENV APP_ENV=${APP_ENV}
 
-# ✅ FIXED: Copy the correct env file directly (no ARG)
+# 🗂️ Optional fallback: still copy .env.prod if it exists
 COPY .env.prod .env
 
-# 📂 Copy the full FastAPI project (routers, auth, static files, etc.)
-COPY . .
+# 📂 Copy application code (modular and explicit)
+COPY main.py .
+COPY app/ app/
+COPY routers/ routers/
+COPY auth/ auth/
+COPY utils/ utils/
+COPY static/ static/
+COPY templates/ templates/
 
-# 🌐 Expose port 8000 for FastAPI app
+# 🌐 Expose the default FastAPI port
 EXPOSE 8000
 
-# 🚀 Launch app with Uvicorn
+# 🚀 Start the app using Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
