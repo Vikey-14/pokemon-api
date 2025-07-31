@@ -5,8 +5,8 @@
 <!-- 🚀 Minor format tweak to trigger Docker CI -->
 
 <p align="center">
-  <a href="https://github.com/Vikey-14/pokemon-api/actions">
-    <img src="https://img.shields.io/github/actions/workflow/status/Vikey-14/pokemon-api/python-app.yml?label=tests&style=flat-square&logo=github" alt="Test Status">
+  <a href="https://github.com/Vikey-14/pokemon-api/actions/workflows/test_and_cover.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/Vikey-14/pokemon-api/test_and_cover.yml?label=tests&style=flat-square&logo=github" alt="Test Status">
   </a>
   <a href="https://github.com/Vikey-14/pokemon-api/actions/workflows/docker-build.yml">
     <img src="https://img.shields.io/github/actions/workflow/status/Vikey-14/pokemon-api/docker-build.yml?label=docker&style=flat-square&logo=docker" alt="Docker Build Status">
