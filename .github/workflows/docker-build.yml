@@ -1,46 +1,34 @@
-name: 🚀 Docker Build & Push
+name: 🐳 Docker Build
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
 
 jobs:
-  build-and-push:
+  docker-build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 🧾 Checkout code
-      uses: actions/checkout@v3
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-    - name: 🐍 Set up Python (optional, only if needed)
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.12"
+      - name: 🔍 Verify files in CI
+        run: ls -al && ls -al templates && ls -al static
 
-    - name: 📦 Prepare Docker Build Folder (Safe Copy)
-      run: |
-        mkdir -p build
-        rsync -av --exclude=build --exclude=.git --exclude=__pycache__/ . build/
+      - name: 🐳 Build Docker image (no secrets passed as build-args)
+        run: |
+          docker build -t pokecenter-api -f Dockerfile .
 
-    - name: 🐳 Build Docker image with secrets as build args
-      run: |
-        docker build \
-          --build-arg SECRET_KEY="${{ secrets.SECRET_KEY }}" \
-          --build-arg JWT_ALGORITHM="${{ secrets.JWT_ALGORITHM }}" \
-          --build-arg TOKEN_EXPIRY_MINUTES="${{ secrets.TOKEN_EXPIRY_MINUTES }}" \
-          --build-arg APP_ENV="${{ secrets.APP_ENV }}" \
-          -t pokecenter-app:latest build/
-
-    - name: 📤 Push Docker image to Docker Hub (optional)
-      if: false  # change to `true` to enable push
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      run: |
-        echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-        docker tag pokecenter-app:latest $DOCKER_USERNAME/pokecenter-app:latest
-        docker push $DOCKER_USERNAME/pokecenter-app:latest
-
-    - name: ✅ Cleanup
-      run: rm -rf build/
+      # ✅ Uncomment to enable DockerHub push
+      # - name: 📤 Push Docker image to Docker Hub
+      #   if: false  # change to true to enable
+      #   env:
+      #     DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      #     DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      #   run: |
+      #     echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+      #     docker tag pokecenter-api:latest $DOCKER_USERNAME/pokecenter-api:latest
+      #     docker push $DOCKER_USERNAME/pokecenter-api:latest
