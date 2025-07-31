@@ -1,16 +1,24 @@
-
 <p align="center">
   <img src="banner.png" alt="PokéCenter API Banner" style="max-width: 100%;">
 </p>
+
+<!-- 🚀 Minor format tweak to trigger Docker CI -->
 
 <p align="center">
   <a href="https://github.com/Vikey-14/pokemon-api/actions">
     <img src="https://img.shields.io/github/actions/workflow/status/Vikey-14/pokemon-api/python-app.yml?label=tests&style=flat-square&logo=github" alt="Test Status">
   </a>
+  <a href="https://github.com/Vikey-14/pokemon-api/actions/workflows/docker-build.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/Vikey-14/pokemon-api/docker-build.yml?label=docker&style=flat-square&logo=docker" alt="Docker Build Status">
+  </a>
   <img src="https://img.shields.io/badge/Python-3.12-blue?style=flat-square&logo=python" alt="Python Version">
   <img src="https://img.shields.io/badge/FastAPI-⚡-green?style=flat-square&logo=fastapi" alt="FastAPI">
   <img src="https://img.shields.io/github/license/Vikey-14/pokemon-api?style=flat-square" alt="MIT License">
+  <a href="https://coveralls.io/github/Vikey-14/pokemon-api?branch=main">
+    <img src="https://coveralls.io/repos/github/Vikey-14/pokemon-api/badge.svg?branch=main&style=flat-square" alt="Coverage Status">
+  </a>
 </p>
+
 
 # 🧪 PokéCenter API — FastAPI Project
 
