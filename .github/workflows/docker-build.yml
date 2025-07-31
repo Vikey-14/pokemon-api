@@ -30,6 +30,9 @@ jobs:
         echo "JWT_ALGORITHM=${{ secrets.JWT_ALGORITHM }}" >> .env.prod
         echo "TOKEN_EXPIRY_MINUTES=${{ secrets.TOKEN_EXPIRY_MINUTES }}" >> .env.prod
 
+    - name: ♻️ Move .env.prod into build context
+      run: mv .env.prod ./  # ✅ This line fixes the "not found" error
+
     - name: 🏗️ Build Docker image (with .env.prod)
       run: |
         docker build \
