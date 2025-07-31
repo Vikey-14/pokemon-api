@@ -35,9 +35,6 @@ COPY static/ static/
 # 📂 JSON data (Pokedex, team data, etc.)
 COPY data/ data/
 
-# 📂 Optional: logs folder to enable logging in container
-COPY logs/ logs/
-
 # 🔐 Load environment config (from CI or fallback local)
 COPY .env.prod.ci .env
 
