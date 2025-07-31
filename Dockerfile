@@ -14,10 +14,16 @@ RUN pip install --no-cache-dir --upgrade pip && pip install -r requirements.txt
 
 # 📂 Copy only necessary source files
 COPY main.py .
-COPY app/ app/
+COPY config.py .
+COPY core_app.py .
 COPY routers/ routers/
 COPY auth/ auth/
 COPY utils/ utils/
+COPY static/ static/
+COPY templates/ templates/
+
+# 🔐 Copy CI environment config as production .env
+COPY .env.prod.ci .env
 
 # 🌐 Expose FastAPI port
 EXPOSE 8000
