@@ -33,7 +33,7 @@ class Settings(BaseSettings):
     debug: bool = True
 
     # 🔐 JWT Auth
-    SECRET_KEY: str
+    SECRET_KEY: str = "test-secret-key"  # ✅ Default for CI/CD safety
     JWT_ALGORITHM: str = "HS256"
     TOKEN_EXPIRY_MINUTES: int = 60
 
@@ -50,7 +50,7 @@ class Settings(BaseSettings):
 
     class Config:
         env_file = dotenv_path
-
+        env_file_encoding = "utf-8"
 
 # ✅ Global instance used throughout the project
 settings = Settings()
