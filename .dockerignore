@@ -1,13 +1,56 @@
+# 🔒 Secrets (Never include real env files)
+.env
+.env.*
+!.env.example
+
+# 🧪 Testing & coverage
+tests/
+.pytest_cache/
+*.test.json
+htmlcov/
+.coverage
+
+# 🐍 Python cache
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# 📁 Local database
 *.db
 *.sqlite3
-.env
+
+# 🪵 Logs & runtime folders
 *.log
+logs/
+uploads/
+gallery/
+data/
+
+# 🧠 IDE/editor folders
 .idea/
 .vscode/
+.spyderproject
+.spyproject
+
+# 🧪 Virtual environments
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# 📦 Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# 🐳 Docker
+docker-compose.override.yml
+
+# 📚 Archives & packages
 *.zip
 *.tar
 *.gz
