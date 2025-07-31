@@ -15,8 +15,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 🔍 Verify files in CI
-        run: ls -al && ls -al templates && ls -al static
+      - name: 🗂️ Print full workspace directory tree
+        run: |
+          echo "::group::CI Workspace Tree"
+          find . -type f | sort
+          echo "::endgroup::"
 
       - name: 🐳 Build Docker image (no secrets passed as build-args)
         run: |
