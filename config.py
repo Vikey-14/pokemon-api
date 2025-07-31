@@ -1,5 +1,6 @@
 import os
 import sys
+from pydantic import Field
 from typing import Optional  # ✅ Needed for Pydantic v2 defaults
 from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
@@ -34,7 +35,7 @@ class Settings(BaseSettings):
     debug: bool = True
 
     # 🔐 JWT Auth
-    SECRET_KEY: Optional[str] = "test-secret-key"  # ✅ FIXED: Pydantic v2 requires Optional + default
+    SECRET_KEY: str = Field(default="test-secret-key", validate_default=True) # ✅ FIXED: Pydantic v2 requires Optional + default
     JWT_ALGORITHM: str = "HS256"
     TOKEN_EXPIRY_MINUTES: int = 60
 
