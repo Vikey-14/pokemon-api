@@ -4,6 +4,7 @@
 .env
 .env.*
 !.env.example
+!.env.test  # ✅ Allow .env.test to be committed for CI
 
 # ------------------------------------------------------------------------------
 # 🧪 Runtime / Upload / Generated Folders
@@ -138,5 +139,3 @@ pip-delete-this-directory.txt
 # ------------------------------------------------------------------------------
 # 📝 Project Template (Optional)
 # ------------------------------------------------------------------------------
-
-# ✅ README.md is now tracked again (line removed)
