@@ -30,13 +30,13 @@ jobs:
         echo "JWT_ALGORITHM=${{ secrets.JWT_ALGORITHM }}" >> .env.prod
         echo "TOKEN_EXPIRY_MINUTES=${{ secrets.TOKEN_EXPIRY_MINUTES }}" >> .env.prod
 
-    - name: ♻️ Prepare Docker build context
+    - name: 📦 Copy project and .env.prod into build folder
       run: |
         mkdir build
-        cp -r ./* build/
-        cp .env.prod build/
+        cp -r * .env.prod build/
+        cp -r .dockerignore Dockerfile build/
 
-    - name: 🏗️ Build Docker image (with .env.prod)
+    - name: 🏗️ Build Docker image from ./build context
       run: |
         docker build \
           --build-arg ENV_FILE=.env.prod \
