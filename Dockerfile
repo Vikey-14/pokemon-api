@@ -17,11 +17,11 @@ COPY requirements.txt .
 # 🛠 Install dependencies
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# 📄 Use build-time ARG to decide which env file to copy
-ARG ENV_FILE=.env.prod
+# ❌ REMOVE build ARG (NOT supported in COPY)
+# ARG ENV_FILE=.env.prod
 
-# 🔁 Copy the selected .env file into container and rename to `.env`
-COPY ${ENV_FILE} .env
+# ✅ FIXED: Copy the correct env file directly (no ARG)
+COPY .env.prod .env
 
 # 📂 Copy the full FastAPI project (routers, auth, static files, etc.)
 COPY . .
