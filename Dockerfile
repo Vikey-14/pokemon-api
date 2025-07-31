@@ -21,6 +21,7 @@ COPY auth/ auth/
 COPY utils/ utils/
 COPY static/ static/
 COPY templates/ templates/
+COPY logger_middleware.py .   
 
 # 🔐 Auto-injected env from GitHub CI or fallback to local .env
 # If building locally, .env should exist in context.
