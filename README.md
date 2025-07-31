@@ -1,3 +1,8 @@
+
+<p align="center">
+  <img src="banner.png" alt="PokéCenter API Banner" style="max-width: 100%;">
+</p>
+
 # 🧪 PokéCenter API — FastAPI Project
 
 Welcome to the **PokéCenter API**, a fully-featured FastAPI application crafted with clean modular architecture, secure JWT authentication, dynamic rate limiting, RBAC, file upload support, and full production deployment via Docker + NGINX + HTTPS.
