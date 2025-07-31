@@ -5,13 +5,14 @@
 # ❗ Ignore the default .env file
 .env
 
-# ⚠️ This wildcard blocks ALL env files, including .env.prod — must come AFTER allowlist
-!.env.prod      # ✅ Include for Docker builds
-!.env.example   # ✅ Include for sharing templates
-!.env.test      # ✅ Include for testing/CI
+# ⚠️ Allowlist required env files before the wildcard
+!.env.prod         # ✅ Allow production env (for Docker builds)
+!.env.prod.ci      # ✅ NEW: Allow CI env file used in GitHub Actions
+!.env.example      # ✅ Allow shared example env
+!.env.test         # ✅ Allow test env
 
-# 🔥 Now block all other unlisted env files
-.env.*          # ⛔ Must come AFTER the allowlist above
+# 🔥 Block all other env files after allowlist
+.env.*             # ⛔ Wildcard must be last to avoid blocking allowed files
 
 # ------------------------------------------------------------------------------
 # 🧪 Runtime / Upload / Generated Folders

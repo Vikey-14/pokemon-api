@@ -306,3 +306,12 @@ fastapi.exceptions.HTTPException: 401: Invalid or expired refresh token
 [2025-07-31 01:28:04,314] [ERROR] ❌ Skipped file 'bad.txt': 400: ❌ File type '.txt' not allowed. Must be CSV or image only.
 [2025-07-31 01:28:04,329] [ERROR] ❌ Skipped file 'script.exe': 400: ❌ File type '.exe' not allowed. Must be CSV or image only.
 [2025-07-31 01:28:04,338] [ERROR] ❌ No valid image files uploaded by professoroak
+[2025-07-31 18:28:02,141] [ERROR] ❌ JWT decode failed: Not enough segments
+[2025-07-31 18:28:02,378] [ERROR] ❌ Image not found: C:\Users\user\Documents\fastapi_project\uploads\images\does_not_exist.png
+[2025-07-31 18:28:02,449] [ERROR] ❌ Battle log not found: nonexistent_logs\battle_log.txt
+[2025-07-31 18:28:03,705] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-31 18:28:04,209] [ERROR] ❌ File 'corrupt.csv' is not valid UTF-8. Uploaded by professoroak
+[2025-07-31 18:28:05,448] [ERROR] ❌ Upload failed: 400: ❌ File type '.exe' not allowed. Must be CSV or image only.
+[2025-07-31 18:28:05,609] [ERROR] ❌ Skipped file 'bad.txt': 400: ❌ File type '.txt' not allowed. Must be CSV or image only.
+[2025-07-31 18:28:05,609] [ERROR] ❌ Skipped file 'script.exe': 400: ❌ File type '.exe' not allowed. Must be CSV or image only.
+[2025-07-31 18:28:05,610] [ERROR] ❌ No valid image files uploaded by professoroak

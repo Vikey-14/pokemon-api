@@ -2777,3 +2777,311 @@
 [2025-07-31 01:28:04,245] [INFO] ✅ JWT Created
 [2025-07-31 01:28:04,246] [INFO] ✅ Login successful for professoroak
 [2025-07-31 01:28:04,293] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5MDkwODQsImlhdCI6MTc1MzkwNTQ4NCwianRpIjoiOGE3M2QxN2QtN2I0YS00NTNmLTllZTYtNzdhOGNkMDc1YjZlIn0.MynAio4szAdB5ZNdA4pe9mq6VcpX0dtZMeDNR9iZpCg
+[2025-07-31 18:27:59,883] [INFO] 🧪 Testing mode: Rate limiter middleware disabled.
+[2025-07-31 18:27:59,883] [INFO] ✅ Logging middleware enabled.
+[2025-07-31 18:27:59,883] [INFO] ✅ SecurityHeaders middleware enabled.
+[2025-07-31 18:28:01,851] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:01,852] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:01,853] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 1, 852617, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 1, 852617, tzinfo=datetime.timezone.utc), 'jti': 'e09f709f-f5b3-4f50-92cb-69e8698ecc8b'}
+[2025-07-31 18:28:01,854] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:01,854] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:01,904] [INFO] ✅ JWT Created
+[2025-07-31 18:28:01,904] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:01,945] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:01,945] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:01,979] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:01,980] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:01,980] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 1, 980241, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 1, 980241, tzinfo=datetime.timezone.utc), 'jti': '7c8ced70-134e-4cf2-b6c0-d32a581cf89c'}
+[2025-07-31 18:28:01,981] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:01,981] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:01,982] [INFO] ✅ JWT Created
+[2025-07-31 18:28:01,982] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:02,000] [INFO] 🔄 Refresh attempt with token: 0cea8592-1700-4bdd-9900-2e0dc37ddefd
+[2025-07-31 18:28:02,000] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 2, 641, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 2, 641, tzinfo=datetime.timezone.utc), 'jti': '881ffc3d-599c-4b5f-9ef1-8969f06ae361'}
+[2025-07-31 18:28:02,003] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:02,003] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:02,004] [INFO] ✅ JWT Created
+[2025-07-31 18:28:02,004] [INFO] ✅ Refresh success for ashketchum
+[2025-07-31 18:28:02,019] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhc2hrZXRjaHVtIiwicm9sZSI6InRyYWluZXIiLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiODgxZmZjM2QtNTk5Yy00YjVmLTllZjEtODk2OWYwNmFlMzYxIn0.eb9h5FcA0o49D17bujiUc-Nl2h12ZjGHLSD49ujSpt4
+[2025-07-31 18:28:02,031] [INFO] 🔄 Refresh attempt with token: 0cea8592-1700-4bdd-9900-2e0dc37ddefd
+[2025-07-31 18:28:02,031] [INFO] 🚫 Reused or invalid refresh token detected!
+[2025-07-31 18:28:02,059] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:02,060] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:02,060] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 2, 60270, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 2, 60270, tzinfo=datetime.timezone.utc), 'jti': '58046555-316c-498e-9a86-68d4d3301d59'}
+[2025-07-31 18:28:02,061] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:02,061] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:02,061] [INFO] ✅ JWT Created
+[2025-07-31 18:28:02,062] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:02,074] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhc2hrZXRjaHVtIiwicm9sZSI6InRyYWluZXIiLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiNTgwNDY1NTUtMzE2Yy00OThlLTlhODYtNjhkNGQzMzAxZDU5In0._IROqZPdZ1V42UbgeUg6iwgEC-bex4uXXP1Bxvs1Z1A
+[2025-07-31 18:28:02,140] [INFO] 🧾 Decoding token: faketoken123
+[2025-07-31 18:28:02,181] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:02,181] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:02,182] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 2, 182209, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 2, 182209, tzinfo=datetime.timezone.utc), 'jti': 'e83247cd-ff0e-429e-a2df-4b842858ef14'}
+[2025-07-31 18:28:02,182] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:02,183] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:02,183] [INFO] ✅ JWT Created
+[2025-07-31 18:28:02,184] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:02,198] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhc2hrZXRjaHVtIiwicm9sZSI6InRyYWluZXIiLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiZTgzMjQ3Y2QtZmYwZS00MjllLWEyZGYtNGI4NDI4NThlZjE0In0.kiQUzbnApFPW1lj51FLhTS3Nd6WIJvZw3MZXUffbRiM
+[2025-07-31 18:28:02,199] [INFO] 📥 Trainer 'ashketchum' downloaded 'battle_log.txt'
+[2025-07-31 18:28:02,256] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:02,256] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:02,257] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 2, 256683, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 2, 256683, tzinfo=datetime.timezone.utc), 'jti': '44e68e3e-eb25-4a74-b7dc-7cfff614153e'}
+[2025-07-31 18:28:02,257] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:02,257] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:02,258] [INFO] ✅ JWT Created
+[2025-07-31 18:28:02,258] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:02,277] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhc2hrZXRjaHVtIiwicm9sZSI6InRyYWluZXIiLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiNDRlNjhlM2UtZWIyNS00YTc0LWI3ZGMtN2NmZmY2MTQxNTNlIn0.9ugb97mNRc_VImHiAT2qr_UTan6h7l22NsLwPulrv38
+[2025-07-31 18:28:02,277] [INFO] 🖼️ Image 'test_image.png' downloaded by 'ashketchum'
+[2025-07-31 18:28:02,342] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:02,342] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:02,342] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 2, 342898, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 2, 342898, tzinfo=datetime.timezone.utc), 'jti': '8eb073b2-bca1-4572-85db-ba59cc251a15'}
+[2025-07-31 18:28:02,342] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:02,342] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:02,342] [INFO] ✅ JWT Created
+[2025-07-31 18:28:02,342] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:02,378] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhc2hrZXRjaHVtIiwicm9sZSI6InRyYWluZXIiLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiOGViMDczYjItYmNhMS00NTcyLTg1ZGItYmE1OWNjMjUxYTE1In0.qHTuFvp7ZTqxJcCO-sechac9lLbyb7fonzfNYJSefR0
+[2025-07-31 18:28:02,415] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:02,416] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:02,416] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 2, 416711, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 2, 416711, tzinfo=datetime.timezone.utc), 'jti': '1b45e1ed-fa26-44dc-acce-8a6de9d42214'}
+[2025-07-31 18:28:02,417] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:02,417] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:02,418] [INFO] ✅ JWT Created
+[2025-07-31 18:28:02,418] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:02,449] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhc2hrZXRjaHVtIiwicm9sZSI6InRyYWluZXIiLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiMWI0NWUxZWQtZmEyNi00NGRjLWFjY2UtOGE2ZGU5ZDQyMjE0In0.Rms_vs_aFSGM90nwZcG8wkJd9KJrLnGXD7XsO3JkEn8
+[2025-07-31 18:28:02,482] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:02,483] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:02,484] [INFO] 🧪 [create_token] Payload: {'sub': 'professoroak', 'role': 'admin', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 2, 484924, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 2, 484924, tzinfo=datetime.timezone.utc), 'jti': 'e8c15a7a-3f88-4f86-888f-434f051d77b1'}
+[2025-07-31 18:28:02,484] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:02,484] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:02,485] [INFO] ✅ JWT Created
+[2025-07-31 18:28:02,487] [INFO] ✅ Login successful for professoroak
+[2025-07-31 18:28:02,518] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiZThjMTVhN2EtM2Y4OC00Zjg2LTg4OGYtNDM0ZjA1MWQ3N2IxIn0.9-1gZ_McBUPcPmvvbgOi7LpuCjrNwuyf5vGu0aEz0Wo
+[2025-07-31 18:28:02,522] [INFO] 🛡️ Secure image 'ok.png' uploaded by professoroak → saved as 'ok.png'.
+[2025-07-31 18:28:02,556] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:02,556] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:02,557] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 2, 557892, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 2, 557892, tzinfo=datetime.timezone.utc), 'jti': '6626833a-5131-48c1-8cc8-4f6a98070b04'}
+[2025-07-31 18:28:02,557] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:02,557] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:02,558] [INFO] ✅ JWT Created
+[2025-07-31 18:28:02,558] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:02,586] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhc2hrZXRjaHVtIiwicm9sZSI6InRyYWluZXIiLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiNjYyNjgzM2EtNTEzMS00OGMxLThjYzgtNGY2YTk4MDcwYjA0In0.BgT6W_uG2lHARO2F5xLxHr2g-6K7VrI-POLmmzG37OI
+[2025-07-31 18:28:02,649] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:02,650] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:02,650] [INFO] 🧪 [create_token] Payload: {'sub': 'professoroak', 'role': 'admin', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 2, 650771, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 2, 650771, tzinfo=datetime.timezone.utc), 'jti': '4175a5fa-5efd-42a1-8b19-39bb655bd171'}
+[2025-07-31 18:28:02,651] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:02,651] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:02,651] [INFO] ✅ JWT Created
+[2025-07-31 18:28:02,652] [INFO] ✅ Login successful for professoroak
+[2025-07-31 18:28:02,695] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiNDE3NWE1ZmEtNWVmZC00MmExLThiMTktMzliYjY1NWJkMTcxIn0.GEQX27iRCeEH30GDCxAsGTxqfCvxn2YdqHGfMWrcB6U
+[2025-07-31 18:28:02,710] [INFO] Trainer {'username': 'professoroak', 'role': 'admin'} added Garchomp (ID: 2) to the Pokédex.
+[2025-07-31 18:28:02,720] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiNDE3NWE1ZmEtNWVmZC00MmExLThiMTktMzliYjY1NWJkMTcxIn0.GEQX27iRCeEH30GDCxAsGTxqfCvxn2YdqHGfMWrcB6U
+[2025-07-31 18:28:02,753] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiNDE3NWE1ZmEtNWVmZC00MmExLThiMTktMzliYjY1NWJkMTcxIn0.GEQX27iRCeEH30GDCxAsGTxqfCvxn2YdqHGfMWrcB6U
+[2025-07-31 18:28:02,758] [INFO] ✏️ 'Garchomp' [ID 2] updated by {'username': 'professoroak', 'role': 'admin'}
+[2025-07-31 18:28:02,805] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiNDE3NWE1ZmEtNWVmZC00MmExLThiMTktMzliYjY1NWJkMTcxIn0.GEQX27iRCeEH30GDCxAsGTxqfCvxn2YdqHGfMWrcB6U
+[2025-07-31 18:28:02,805] [INFO] 🗑️ 'Garchomp' [ID 2] deleted by {'username': 'professoroak', 'role': 'admin'}
+[2025-07-31 18:28:02,827] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODIsImlhdCI6MTc1Mzk2NjY4MiwianRpIjoiNDE3NWE1ZmEtNWVmZC00MmExLThiMTktMzliYjY1NWJkMTcxIn0.GEQX27iRCeEH30GDCxAsGTxqfCvxn2YdqHGfMWrcB6U
+[2025-07-31 18:28:03,004] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:03,004] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:03,005] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 3, 4298, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 3, 4298, tzinfo=datetime.timezone.utc), 'jti': '6c8626df-9468-4bbf-a383-80c6158ae78e'}
+[2025-07-31 18:28:03,006] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:03,006] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:03,006] [INFO] ✅ JWT Created
+[2025-07-31 18:28:03,008] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:03,046] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhc2hrZXRjaHVtIiwicm9sZSI6InRyYWluZXIiLCJleHAiOjE3NTM5NzAyODMsImlhdCI6MTc1Mzk2NjY4MywianRpIjoiNmM4NjI2ZGYtOTQ2OC00YmJmLWEzODMtODBjNjE1OGFlNzhlIn0.a0S6BhxovsFB7soApzCja9xn9sYfjzBabD7Z7zCwleA
+[2025-07-31 18:28:03,148] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:03,153] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:03,153] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 3, 153271, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 3, 153271, tzinfo=datetime.timezone.utc), 'jti': '712c242e-aaeb-4a3e-8976-5be9efafe56f'}
+[2025-07-31 18:28:03,158] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:03,159] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:03,159] [INFO] ✅ JWT Created
+[2025-07-31 18:28:03,163] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:03,246] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:03,247] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:03,248] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 3, 248872, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 3, 248872, tzinfo=datetime.timezone.utc), 'jti': '5c1e49e3-5dec-4216-ad16-a9e7bedff8ed'}
+[2025-07-31 18:28:03,248] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:03,249] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:03,249] [INFO] ✅ JWT Created
+[2025-07-31 18:28:03,250] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:03,404] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:03,405] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:03,405] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 3, 405049, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 3, 405049, tzinfo=datetime.timezone.utc), 'jti': '00e542a8-15b3-4d6a-ab84-55e8dd13d170'}
+[2025-07-31 18:28:03,406] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:03,406] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:03,408] [INFO] ✅ JWT Created
+[2025-07-31 18:28:03,409] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:03,552] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:03,552] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:03,554] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 3, 554773, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 3, 554773, tzinfo=datetime.timezone.utc), 'jti': '5211bd37-571b-4fd7-9b1b-5466fe89005d'}
+[2025-07-31 18:28:03,554] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:03,554] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:03,554] [INFO] ✅ JWT Created
+[2025-07-31 18:28:03,556] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:03,618] [INFO] ❌ Bulbasaur [ID 1] removed from team by {'username': 'ashketchum', 'role': 'trainer'}
+[2025-07-31 18:28:03,675] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:03,676] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:03,677] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 3, 677320, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 3, 677320, tzinfo=datetime.timezone.utc), 'jti': '88183201-17f4-44e1-9566-618f59a66995'}
+[2025-07-31 18:28:03,677] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:03,679] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:03,680] [INFO] ✅ JWT Created
+[2025-07-31 18:28:03,681] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:03,746] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:03,746] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:03,746] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 3, 746429, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 3, 746429, tzinfo=datetime.timezone.utc), 'jti': '29fde65e-db4e-4212-80f5-c7d81c87398d'}
+[2025-07-31 18:28:03,746] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:03,746] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:03,746] [INFO] ✅ JWT Created
+[2025-07-31 18:28:03,746] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:03,796] [INFO] 🖼️ {'username': 'ashketchum', 'role': 'trainer'} viewed the Pokémon Gallery with 2 images.
+[2025-07-31 18:28:03,848] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:03,849] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:03,850] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 3, 849706, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 3, 849706, tzinfo=datetime.timezone.utc), 'jti': '463f3adf-0d69-473d-a140-42e1ca9516cf'}
+[2025-07-31 18:28:03,851] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:03,851] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:03,851] [INFO] ✅ JWT Created
+[2025-07-31 18:28:03,854] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:03,877] [INFO] 📁 {'username': 'ashketchum', 'role': 'trainer'} accessed gallery - Folder exists but empty.
+[2025-07-31 18:28:03,933] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:03,933] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:03,933] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 3, 933225, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 3, 933225, tzinfo=datetime.timezone.utc), 'jti': 'bfd3b829-ace7-4a07-99a1-163bf0c97c1b'}
+[2025-07-31 18:28:03,937] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:03,937] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:03,942] [INFO] ✅ JWT Created
+[2025-07-31 18:28:03,942] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:03,962] [INFO] 📁 {'username': 'ashketchum', 'role': 'trainer'} accessed gallery – No folder found.
+[2025-07-31 18:28:04,044] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:04,044] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:04,044] [INFO] 🧪 [create_token] Payload: {'sub': 'professoroak', 'role': 'admin', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 4, 44778, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 4, 44778, tzinfo=datetime.timezone.utc), 'jti': '218de53a-6746-46ca-b9cd-2027116cd9cb'}
+[2025-07-31 18:28:04,045] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:04,046] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:04,047] [INFO] ✅ JWT Created
+[2025-07-31 18:28:04,047] [INFO] ✅ Login successful for professoroak
+[2025-07-31 18:28:04,078] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODQsImlhdCI6MTc1Mzk2NjY4NCwianRpIjoiMjE4ZGU1M2EtNjc0Ni00NmNhLWI5Y2QtMjAyNzExNmNkOWNiIn0.zmNVxeQbVsTlzcpJZzLRMO79X_kecXUWv6iwjWYNA4Y
+[2025-07-31 18:28:04,082] [INFO] 📊 Trainer 'professoroak' uploaded CSV 'pokemon.csv' → 2 Pokémon added: ['Bulbasaur', 'Charmander']
+[2025-07-31 18:28:04,107] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:04,107] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:04,107] [INFO] 🧪 [create_token] Payload: {'sub': 'professoroak', 'role': 'admin', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 4, 107795, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 4, 107795, tzinfo=datetime.timezone.utc), 'jti': 'e851a491-4494-4696-b2e8-e3cfa40fc4f1'}
+[2025-07-31 18:28:04,107] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:04,107] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:04,107] [INFO] ✅ JWT Created
+[2025-07-31 18:28:04,107] [INFO] ✅ Login successful for professoroak
+[2025-07-31 18:28:04,140] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODQsImlhdCI6MTc1Mzk2NjY4NCwianRpIjoiZTg1MWE0OTEtNDQ5NC00Njk2LWIyZTgtZTNjZmE0MGZjNGYxIn0.yem3Bm5gCbH05NdaZspNclg_G8OUJuCo-Hoe05nfVeQ
+[2025-07-31 18:28:04,171] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:04,172] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:04,172] [INFO] 🧪 [create_token] Payload: {'sub': 'professoroak', 'role': 'admin', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 4, 172877, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 4, 172877, tzinfo=datetime.timezone.utc), 'jti': '104863d6-f2e9-4ba1-a853-6cb4db536eaa'}
+[2025-07-31 18:28:04,172] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:04,172] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:04,174] [INFO] ✅ JWT Created
+[2025-07-31 18:28:04,174] [INFO] ✅ Login successful for professoroak
+[2025-07-31 18:28:04,209] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODQsImlhdCI6MTc1Mzk2NjY4NCwianRpIjoiMTA0ODYzZDYtZjJlOS00YmExLWE4NTMtNmNiNGRiNTM2ZWFhIn0.dxUG_H3lVb2-xJwRAEI6oBzbXColzfmIVsfxssCCCPY
+[2025-07-31 18:28:04,254] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:04,255] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:04,256] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 4, 256464, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 4, 256464, tzinfo=datetime.timezone.utc), 'jti': '94135836-2eef-4d93-a732-2ca1c6168ab1'}
+[2025-07-31 18:28:04,257] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:04,257] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:04,258] [INFO] ✅ JWT Created
+[2025-07-31 18:28:04,258] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:04,425] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhc2hrZXRjaHVtIiwicm9sZSI6InRyYWluZXIiLCJleHAiOjE3NTM5NzAyODQsImlhdCI6MTc1Mzk2NjY4NCwianRpIjoiOTQxMzU4MzYtMmVlZi00ZDkzLWE3MzItMmNhMWM2MTY4YWIxIn0.xPOB-xXQsDSyZvXqQlKDUYkaikG5-k34-EKkeb_yFqw
+[2025-07-31 18:28:04,522] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:04,523] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:04,523] [INFO] 🧪 [create_token] Payload: {'sub': 'professoroak', 'role': 'admin', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 4, 523849, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 4, 523849, tzinfo=datetime.timezone.utc), 'jti': 'f6429b61-21e6-4c7c-9573-4203a4f12e83'}
+[2025-07-31 18:28:04,525] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:04,525] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:04,526] [INFO] ✅ JWT Created
+[2025-07-31 18:28:04,526] [INFO] ✅ Login successful for professoroak
+[2025-07-31 18:28:04,558] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODQsImlhdCI6MTc1Mzk2NjY4NCwianRpIjoiZjY0MjliNjEtMjFlNi00YzdjLTk1NzMtNDIwM2E0ZjEyZTgzIn0.ZXSHuQgTKmBFj-zJTQfYfYnLNDTTujU6J6tFenZ_Ux0
+[2025-07-31 18:28:04,562] [INFO] 📥 Validated CSV 'validated.csv' uploaded by '{'username': 'professoroak', 'role': 'admin'}' → ✅ Added: 2, ⚠️ Duplicates: 1, ❌ Failed: 2
+[2025-07-31 18:28:04,685] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:04,688] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:04,688] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 4, 688812, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 4, 688812, tzinfo=datetime.timezone.utc), 'jti': 'a83fd124-20fe-428a-8c99-fc9c71b29ac9'}
+[2025-07-31 18:28:04,689] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:04,690] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:04,691] [INFO] ✅ JWT Created
+[2025-07-31 18:28:04,693] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:04,779] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhc2hrZXRjaHVtIiwicm9sZSI6InRyYWluZXIiLCJleHAiOjE3NTM5NzAyODQsImlhdCI6MTc1Mzk2NjY4NCwianRpIjoiYTgzZmQxMjQtMjBmZS00MjhhLThjOTktZmM5YzcxYjI5YWM5In0.qaP5DWO0a5WHCQPg6kMNhofbdg3g-mOUC8htylhL-2E
+[2025-07-31 18:28:04,789] [INFO] 🖼️ Image 'pikachu.png' uploaded by Trainer 'ashketchum' → saved as '20250731182804_pikachu.png'.
+[2025-07-31 18:28:04,830] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:04,830] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:04,830] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 4, 830443, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 4, 830443, tzinfo=datetime.timezone.utc), 'jti': 'ad4770fc-7836-4383-9216-e26a41f7195b'}
+[2025-07-31 18:28:04,830] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:04,830] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:04,830] [INFO] ✅ JWT Created
+[2025-07-31 18:28:04,830] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:04,893] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhc2hrZXRjaHVtIiwicm9sZSI6InRyYWluZXIiLCJleHAiOjE3NTM5NzAyODQsImlhdCI6MTc1Mzk2NjY4NCwianRpIjoiYWQ0NzcwZmMtNzgzNi00MzgzLTkyMTYtZTI2YTQxZjcxOTViIn0.DExDe3y4d-yVLO8NlLUwK__qYstNXN47NcLFuKtslBg
+[2025-07-31 18:28:04,898] [INFO] 🖼️ Image 'bulbasaur.png' uploaded by 'ashketchum' → saved as '20250731182804_bulbasaur.png'
+[2025-07-31 18:28:04,906] [INFO] 🖼️ Image 'charmander.jpg' uploaded by 'ashketchum' → saved as '20250731182804_charmander.jpg'
+[2025-07-31 18:28:04,943] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:04,943] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:04,943] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 4, 943273, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 4, 943273, tzinfo=datetime.timezone.utc), 'jti': 'bff0ea32-f912-445a-866c-45d50d648e52'}
+[2025-07-31 18:28:04,943] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:04,943] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:04,943] [INFO] ✅ JWT Created
+[2025-07-31 18:28:04,943] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:04,975] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhc2hrZXRjaHVtIiwicm9sZSI6InRyYWluZXIiLCJleHAiOjE3NTM5NzAyODQsImlhdCI6MTc1Mzk2NjY4NCwianRpIjoiYmZmMGVhMzItZjkxMi00NDVhLTg2NmMtNDVkNTBkNjQ4ZTUyIn0.kovVuQzjYQLHOmhdq5Tghk5jTy3AzOXJSVxfH-FBh9w
+[2025-07-31 18:28:05,011] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:05,012] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:05,012] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 5, 12312, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 5, 12312, tzinfo=datetime.timezone.utc), 'jti': '14448291-c4a4-4fa1-a1b3-74f3b2bb8c7a'}
+[2025-07-31 18:28:05,012] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:05,012] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:05,013] [INFO] ✅ JWT Created
+[2025-07-31 18:28:05,014] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:05,038] [INFO] 💾 File 'hello.txt' saved by '{'username': 'ashketchum', 'role': 'trainer'}' as 'hello.txt'
+[2025-07-31 18:28:05,077] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:05,078] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:05,078] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 5, 78099, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 5, 78099, tzinfo=datetime.timezone.utc), 'jti': '2d0dc506-c933-4cd7-8741-8e9a40d2b256'}
+[2025-07-31 18:28:05,079] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:05,079] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:05,079] [INFO] ✅ JWT Created
+[2025-07-31 18:28:05,080] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:05,105] [INFO] 👁️ Previewed text file 'data.csv' by '{'username': 'ashketchum', 'role': 'trainer'}'
+[2025-07-31 18:28:05,148] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:05,148] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:05,149] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 5, 149240, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 5, 149240, tzinfo=datetime.timezone.utc), 'jti': '578efa66-433c-45ee-87fa-339743922bd5'}
+[2025-07-31 18:28:05,149] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:05,150] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:05,150] [INFO] ✅ JWT Created
+[2025-07-31 18:28:05,151] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:05,194] [INFO] 🖼️ Image 'test.png' uploaded by '{'username': 'ashketchum', 'role': 'trainer'}' (preview skipped)
+[2025-07-31 18:28:05,257] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:05,257] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:05,257] [INFO] 🧪 [create_token] Payload: {'sub': 'ashketchum', 'role': 'trainer', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 5, 257394, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 5, 257394, tzinfo=datetime.timezone.utc), 'jti': '3b5fbaaa-f1f1-4e29-b62d-9b5533a6aa83'}
+[2025-07-31 18:28:05,261] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:05,261] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:05,261] [INFO] ✅ JWT Created
+[2025-07-31 18:28:05,261] [INFO] ✅ Login successful for ashketchum
+[2025-07-31 18:28:05,329] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:05,329] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:05,329] [INFO] 🧪 [create_token] Payload: {'sub': 'professoroak', 'role': 'admin', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 5, 329213, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 5, 329213, tzinfo=datetime.timezone.utc), 'jti': 'da8ffc6f-c221-475f-8c6c-7fb5fb8c3f1a'}
+[2025-07-31 18:28:05,329] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:05,329] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:05,329] [INFO] ✅ JWT Created
+[2025-07-31 18:28:05,329] [INFO] ✅ Login successful for professoroak
+[2025-07-31 18:28:05,372] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODUsImlhdCI6MTc1Mzk2NjY4NSwianRpIjoiZGE4ZmZjNmYtYzIyMS00NzVmLThjNmMtN2ZiNWZiOGMzZjFhIn0.dgE7IiX0BtQqC6R54WAqLKvWhCFEO9d6EWz3Vs3rRWA
+[2025-07-31 18:28:05,377] [INFO] 🛡️ Secure image 'secure_pikachu.png' uploaded by professoroak → saved as 'secure_pikachu.png'.
+[2025-07-31 18:28:05,410] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:05,410] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:05,410] [INFO] 🧪 [create_token] Payload: {'sub': 'professoroak', 'role': 'admin', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 5, 410023, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 5, 410023, tzinfo=datetime.timezone.utc), 'jti': '0f3fe55f-4e90-49a5-bcf9-7b13b6b13a19'}
+[2025-07-31 18:28:05,410] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:05,410] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:05,410] [INFO] ✅ JWT Created
+[2025-07-31 18:28:05,416] [INFO] ✅ Login successful for professoroak
+[2025-07-31 18:28:05,448] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODUsImlhdCI6MTc1Mzk2NjY4NSwianRpIjoiMGYzZmU1NWYtNGU5MC00OWE1LWJjZjktN2IxM2I2YjEzYTE5In0.TCuT78MLku7A6rPDB2J4fAG_-NC_Ba8enJ7zdZN25BM
+[2025-07-31 18:28:05,482] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:05,483] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:05,483] [INFO] 🧪 [create_token] Payload: {'sub': 'professoroak', 'role': 'admin', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 5, 483934, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 5, 483934, tzinfo=datetime.timezone.utc), 'jti': 'c697d7e0-0d24-483e-9986-b86d41b4836a'}
+[2025-07-31 18:28:05,484] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:05,484] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:05,485] [INFO] ✅ JWT Created
+[2025-07-31 18:28:05,486] [INFO] ✅ Login successful for professoroak
+[2025-07-31 18:28:05,522] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODUsImlhdCI6MTc1Mzk2NjY4NSwianRpIjoiYzY5N2Q3ZTAtMGQyNC00ODNlLTk5ODYtYjg2ZDQxYjQ4MzZhIn0.QOUEt0WDelqNhc1ETiGMuM9wOXOKpg_Ktxht9Wygy4g
+[2025-07-31 18:28:05,522] [INFO] 🛡️ Trainer 'professoroak' uploaded 2 images: ['img1.png', 'img2.jpg']
+[2025-07-31 18:28:05,565] [INFO] 🟢 /auth/login HIT
+[2025-07-31 18:28:05,565] [INFO] 👥 Users: {'ashketchum': {'username': 'ashketchum', 'password': 'pikapika', 'role': 'trainer'}, 'professoroak': {'username': 'professoroak', 'password': 'pallet123', 'role': 'admin'}}
+[2025-07-31 18:28:05,566] [INFO] 🧪 [create_token] Payload: {'sub': 'professoroak', 'role': 'admin', 'exp': datetime.datetime(2025, 7, 31, 13, 58, 5, 566110, tzinfo=datetime.timezone.utc), 'iat': datetime.datetime(2025, 7, 31, 12, 58, 5, 566110, tzinfo=datetime.timezone.utc), 'jti': '75b64075-e62d-4d5e-858a-dc625590349d'}
+[2025-07-31 18:28:05,566] [INFO] 🔐 SECRET_KEY: 'test_secret_key'
+[2025-07-31 18:28:05,566] [INFO] 🧾 Algorithm: HS256
+[2025-07-31 18:28:05,567] [INFO] ✅ JWT Created
+[2025-07-31 18:28:05,567] [INFO] ✅ Login successful for professoroak
+[2025-07-31 18:28:05,606] [INFO] 🧾 Decoding token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwcm9mZXNzb3JvYWsiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3NTM5NzAyODUsImlhdCI6MTc1Mzk2NjY4NSwianRpIjoiNzViNjQwNzUtZTYyZC00ZDVlLTg1OGEtZGM2MjU1OTAzNDlkIn0.xkQ53nw_kbzmbDnMYdLhuISF5CoNLkgMPcMUpcK5VMo
+[2025-07-31 18:35:16,939] [INFO] 🧪 Testing mode: Rate limiter middleware disabled.
+[2025-07-31 18:35:16,939] [INFO] ✅ Logging middleware enabled.
+[2025-07-31 18:35:16,939] [INFO] ✅ SecurityHeaders middleware enabled.

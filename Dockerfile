@@ -12,7 +12,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && pip install -r requirements.txt
 
-# 📂 Copy only necessary source files
+# 📂 Copy core app files (modular structure)
 COPY main.py .
 COPY config.py .
 COPY core_app.py .
@@ -22,11 +22,13 @@ COPY utils/ utils/
 COPY static/ static/
 COPY templates/ templates/
 
-# 🔐 Copy CI environment config as production .env
+# 🔐 Auto-injected env from GitHub CI or fallback to local .env
+# If building locally, .env should exist in context.
+# If building via GitHub, ensure .env.prod.ci is pre-placed.
 COPY .env.prod.ci .env
 
 # 🌐 Expose FastAPI port
 EXPOSE 8000
 
-# 🚀 Run app
+# 🚀 Run app with Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

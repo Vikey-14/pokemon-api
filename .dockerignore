@@ -1,25 +1,26 @@
 # 🔒 Secrets (Never include real local env files)
-.env                # Ignore main local .env
-!.env.prod          # ✅ Explicitly allow .env.prod (used in Docker build)
-!.env.example       # ✅ Allow example for documentation
+.env                  # ⛔ Ignore default local .env
+!.env.prod            # ✅ Allow production env for Docker builds
+!.env.prod.ci         # ✅ Allow CI env used in GitHub Actions
+!.env.example         # ✅ Allow example template for documentation
 
-# ⚠️ REMOVE this if it exists anywhere
-# .env.*            # ⛔ This would block .env.prod — DO NOT USE
+# ⚠️ DO NOT use this — would block required files
+# .env.*              # ❌ Would block .env.prod / .env.prod.ci
 
-# 🧪 Testing & coverage
+# 🧪 Tests & Coverage
 tests/
 .pytest_cache/
 *.test.json
 htmlcov/
 .coverage
 
-# 🐍 Python cache
+# 🐍 Python Cache
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# 📁 Local database & runtime files
+# 📁 Local Runtime Files
 *.db
 *.sqlite3
 *.log
@@ -28,13 +29,13 @@ uploads/
 gallery/
 data/
 
-# 🧠 IDE/editor folders
+# 🧠 IDE/Editor Configs
 .idea/
 .vscode/
 .spyderproject
 .spyproject
 
-# 🧪 Virtual environments
+# 🧪 Virtual Environments
 env/
 venv/
 .venv/
@@ -42,16 +43,17 @@ ENV/
 env.bak/
 venv.bak/
 
-# 📦 Build artifacts
+# 📦 Build Artifacts
 build/
 dist/
 *.egg-info/
 .eggs/
 
-# 🐳 Docker config overrides
+# 🐳 Docker Config (Overrides Only)
 docker-compose.override.yml
 
-# 📚 Archives & packages
+# 📚 Archives & Compressed Packages
 *.zip
 *.tar
 *.gz
+
