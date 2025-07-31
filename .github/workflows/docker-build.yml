@@ -30,11 +30,12 @@ jobs:
         echo "JWT_ALGORITHM=${{ secrets.JWT_ALGORITHM }}" >> .env.prod
         echo "TOKEN_EXPIRY_MINUTES=${{ secrets.TOKEN_EXPIRY_MINUTES }}" >> .env.prod
 
-    - name: 📦 Prepare clean build context
+    - name: 📦 Prepare clean Docker build context
+      shell: bash
       run: |
         mkdir build
-        shopt -s extglob  # Enable extended pattern matching
-        cp -r !(build) build/  # ✅ Copy everything *except* the build folder itself
+        shopt -s extglob
+        cp -r !(build|.git|.github) build/
         cp .env.prod build/
         cp .dockerignore Dockerfile build/
 
