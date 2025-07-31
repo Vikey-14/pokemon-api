@@ -5,7 +5,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # main.py — boots up the real app from core
 from fastapi import Request
-from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.responses import JSONResponse, HTMLResponse, Response
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from slowapi.errors import RateLimitExceeded
 from core_app import core_app as app  # ✅ Pulls the real app from core
@@ -25,8 +25,9 @@ def log_pokemon_addition(trainer: str, pokemon_name: str, pokemon_id: int):
         f.write(f"[{now}] Trainer {trainer} added {pokemon_name} (ID: {pokemon_id}) to the Pokédex.\n")
 
 
-# ✅ HTML Welcome Page
+# ✅ HTML Welcome Page with HEAD support to silence 405
 @app.get("/", response_class=HTMLResponse)
+@app.head("/", include_in_schema=False)  # 🧼 Added to prevent Render 405 logs
 def home():
     return """
     <html lang="en">
@@ -113,6 +114,7 @@ async def custom_http_exception_handler(request: Request, exc: StarletteHTTPExce
         status_code=exc.status_code,
         content={"detail": exc.detail}
     )
+
 
 @app.exception_handler(RateLimitExceeded)
 async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
