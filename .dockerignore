@@ -1,7 +1,10 @@
-# 🔒 Secrets (Never include real env files)
-.env
-.env.*
-!.env.example
+# 🔒 Secrets (Never include real local env files)
+.env                # Ignore main local .env
+!.env.prod          # ✅ Explicitly allow .env.prod (used in Docker build)
+!.env.example       # ✅ Allow example for documentation
+
+# ⚠️ REMOVE this if it exists anywhere
+# .env.*            # ⛔ This would block .env.prod — DO NOT USE
 
 # 🧪 Testing & coverage
 tests/
@@ -16,11 +19,9 @@ __pycache__/
 *.pyo
 *.pyd
 
-# 📁 Local database
+# 📁 Local database & runtime files
 *.db
 *.sqlite3
-
-# 🪵 Logs & runtime folders
 *.log
 logs/
 uploads/
@@ -47,7 +48,7 @@ dist/
 *.egg-info/
 .eggs/
 
-# 🐳 Docker
+# 🐳 Docker config overrides
 docker-compose.override.yml
 
 # 📚 Archives & packages
