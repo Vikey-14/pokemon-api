@@ -16,16 +16,13 @@ RUN pip install --no-cache-dir --upgrade pip && pip install -r requirements.txt
 COPY main.py .
 COPY config.py .
 COPY core_app.py .
-COPY routers/ routers/
+COPY custom_logger.py .           
 COPY auth/ auth/
 COPY utils/ utils/
 COPY static/ static/
 COPY templates/ templates/
-COPY logger_middleware.py .   
 
 # 🔐 Auto-injected env from GitHub CI or fallback to local .env
-# If building locally, .env should exist in context.
-# If building via GitHub, ensure .env.prod.ci is pre-placed.
 COPY .env.prod.ci .env
 
 # 🌐 Expose FastAPI port
