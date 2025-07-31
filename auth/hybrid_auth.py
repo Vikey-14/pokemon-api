@@ -1,29 +1,43 @@
-from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi import APIRouter, HTTPException, status, Depends, Request
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from config import settings
 from jose import jwt, JWTError, ExpiredSignatureError
-from custom_logger import info_logger, error_logger  # ✅ Import both loggers
+from custom_logger import info_logger, error_logger
+from utils.limiter_utils import limit_safe
 import uuid
+import os
 
-# 🔐 Secret key and algorithm for JWT
+# 🔐 JWT Configuration
 SECRET_KEY = settings.SECRET_KEY
 ALGORITHM = settings.JWT_ALGORITHM
+TESTING = settings.TESTING
 
-# 🧠 In-memory store for refresh tokens with expiry
+# 🧠 Token Store (in-memory for refresh tokens)
 refresh_token_store = {}
-
-# 🧍 Dummy user (replace with DB logic later)
-fake_user = {
-    "username": "ashketchum",
-    "password": "pikapika",
-    "role": "trainer"
-}
-
+security = HTTPBearer()
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
-# 🧠 Pydantic models
+# 👤 Fake users for testing
+if TESTING:
+    fake_users = {
+        "ashketchum": {
+            "username": "ashketchum",
+            "password": "pikapika",
+            "role": "trainer"
+        },
+        "professoroak": {
+            "username": "professoroak",
+            "password": "pallet123",
+            "role": "admin"
+        }
+    }
+else:
+    from users.fake_db import fake_users
+
+
+# 🧾 Pydantic Schemas
 class LoginInput(BaseModel):
     username: str
     password: str
@@ -33,109 +47,154 @@ class TokenPair(BaseModel):
     refresh_token: str
     token_type: str = "bearer"
 
-# 🔑 Token generator
-def create_token(data: dict, expires_delta: timedelta) -> str:
-    to_encode = data.copy()
-    expire = datetime.utcnow() + expires_delta
-    to_encode.update({"exp": expire})
-    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
-# 🛡️ Extract bearer token
-security = HTTPBearer()
-
-# 🟢 Login Route
-@router.post("/login", response_model=TokenPair)
-def login_user(login: LoginInput):
-    if login.username != fake_user["username"] or login.password != fake_user["password"]:
-        error_logger.error(f"❌ Login failed for user '{login.username}' – Invalid credentials")
-        raise HTTPException(status_code=401, detail="Invalid credentials")
-
-    access_token = create_token(
-        {"sub": fake_user["username"], "role": fake_user["role"]},
-        expires_delta=timedelta(hours=1)
-    )
-
-    refresh_token = str(uuid.uuid4())
-    expiry = datetime.utcnow() + timedelta(days=7)
-
-    refresh_token_store[fake_user["username"]] = {
-        "token": refresh_token,
-        "expires_at": expiry
-    }
-
-    info_logger.info(f"🔐 '{login.username}' logged in. Access + refresh tokens issued.")
-
-    return {
-        "access_token": access_token,
-        "refresh_token": refresh_token
-    }
-
-# 🔁 Refresh Token Route
-@router.post("/refresh-token", response_model=TokenPair)
-def rotate_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
-    incoming_refresh_token = credentials.credentials
-
-    for username, token_info in refresh_token_store.items():
-        stored_token = token_info["token"]
-        expiry_time = token_info["expires_at"]
-
-        if stored_token == incoming_refresh_token:
-            if datetime.utcnow() > expiry_time:
-                error_logger.error(f"⏳ Refresh token expired for '{username}'")
-                raise HTTPException(status_code=401, detail="Refresh token expired")
-
-            new_refresh_token = str(uuid.uuid4())
-            new_expiry = datetime.utcnow() + timedelta(days=7)
-            refresh_token_store[username] = {
-                "token": new_refresh_token,
-                "expires_at": new_expiry
-            }
-
-            new_access_token = create_token(
-                {"sub": username, "role": fake_user["role"]},
-                expires_delta=timedelta(hours=1)
-            )
-
-            info_logger.info(f"🔁 '{username}' rotated refresh token successfully.")
-            return {
-                "access_token": new_access_token,
-                "refresh_token": new_refresh_token
-            }
-
-    error_logger.error(f"❌ Invalid refresh token attempt: {incoming_refresh_token}")
-    raise HTTPException(status_code=401, detail="Invalid or expired refresh token")
-
-# ✅ Extract current user from access token
+# 🛡️ Token Decoder 
 def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
     try:
+        info_logger.info(f"🧾 Decoding token: {credentials.credentials}")
         payload = jwt.decode(credentials.credentials, SECRET_KEY, algorithms=[ALGORITHM])
         username = payload.get("sub")
         role = payload.get("role")
 
         if not username or not role:
-            error_logger.error("❌ Access token missing username or role")
-            raise HTTPException(status_code=401, detail="Invalid access token")
+            raise HTTPException(status_code=401, detail="Invalid token")
 
-        info_logger.info(f"✅ Access token valid for '{username}'.")
         return {"username": username, "role": role}
-
     except ExpiredSignatureError:
-        error_logger.error("⛔ Access token expired.")
         raise HTTPException(status_code=401, detail="Access token expired")
-    except JWTError:
-        error_logger.error("⛔ Access token decoding failed.")
-        raise HTTPException(status_code=401, detail="Invalid access token")
+    except JWTError as e:
+        error_logger.error(f"❌ JWT decode failed: {str(e)}")
+        raise HTTPException(status_code=401, detail="Invalid token")
 
-# 🔐 Role-based protection
+
+# 🔐 Role Checker
 def role_required(required_role: str):
-    def role_dependency(user: dict = Depends(get_current_user)):
+    def wrapper(user: dict = Depends(get_current_user)):
         if user["role"] != required_role:
-            error_logger.error(f"🚫 Access denied – '{user['username']}' attempted '{required_role}' access")
-            raise HTTPException(status_code=403, detail="Forbidden: You are not authorized")
+            raise HTTPException(status_code=403, detail="Forbidden")
         return user
-    return role_dependency
+    return wrapper
 
-# 🔍 Whoami route
+
+# 🔐 Token Generator
+def create_token(data: dict, expires_delta: timedelta) -> str:
+    from jose.exceptions import JOSEError
+
+    try:
+        payload = data.copy()
+        expire = datetime.now(timezone.utc) + expires_delta
+        payload.update({
+            "exp": expire,
+            "iat": datetime.now(timezone.utc),
+            "jti": str(uuid.uuid4())
+        })
+
+        info_logger.info(f"🧪 [create_token] Payload: {payload}")
+        info_logger.info(f"🔐 SECRET_KEY: {repr(SECRET_KEY)}")
+        info_logger.info(f"🧾 Algorithm: {ALGORITHM}")
+
+        token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+        info_logger.info("✅ JWT Created")
+        return token
+
+    except JOSEError as e:
+        error_logger.error(f"❌ JOSEError: {str(e)}")
+        raise HTTPException(status_code=500, detail="JWT creation failed")
+    except Exception as e:
+        error_logger.exception(f"❌ Unknown error during JWT creation: {str(e)}")
+        raise HTTPException(status_code=500, detail="Token creation failed")
+
+
+# 🔓 Login Route
+@router.post("/login")
+@limit_safe("5/minute")
+async def login_user(request: Request, login: LoginInput):
+    info_logger.info("🟢 /auth/login HIT")
+
+    try:
+        info_logger.info(f"👥 Users: {fake_users}")
+        user = fake_users.get(login.username)
+        if not user or user["password"] != login.password:
+            error_logger.warning(f"🚫 Login failed for: {login.username}")
+            raise HTTPException(status_code=401, detail="Invalid credentials")
+
+        access_token = create_token(
+            {"sub": login.username, "role": user["role"]},
+            expires_delta=timedelta(hours=1)
+        )
+
+        refresh_token = str(uuid.uuid4())
+        refresh_token_store[login.username] = {
+            "token": refresh_token,
+            "expires_at": datetime.now(timezone.utc) + timedelta(days=7)
+        }
+
+        info_logger.info(f"✅ Login successful for {login.username}")
+        return {
+            "access_token": access_token,
+            "refresh_token": refresh_token,
+            "token_type": "bearer"
+        }
+
+    except HTTPException:
+        raise  # ✅ Preserve real status codes
+    except Exception as e:
+        error_logger.exception(f"❌ Crash in login_user: {str(e)}")
+        raise HTTPException(status_code=500, detail="Login crash")
+
+
+# 🔁 Refresh Token Route
+@router.post("/refresh-token")
+@limit_safe("10/minute")
+async def rotate_token(request: Request, credentials: HTTPAuthorizationCredentials = Depends(security)):
+    try:
+        incoming = credentials.credentials
+        info_logger.info(f"🔄 Refresh attempt with token: {incoming}")
+
+        # 🔍 Search all users for a matching refresh token
+        for username, token_info in refresh_token_store.items():
+            if token_info["token"] == incoming:
+                # ⏳ Check expiry
+                if datetime.now(timezone.utc) > token_info["expires_at"]:
+                    raise HTTPException(status_code=401, detail="Refresh token expired")
+
+                # 🔍 Get user info
+                user = fake_users.get(username)
+                if not user:
+                    raise HTTPException(status_code=401, detail="User not found")
+
+                # 🔁 Rotate token
+                new_refresh_token = str(uuid.uuid4())
+                refresh_token_store[username] = {
+                    "token": new_refresh_token,
+                    "expires_at": datetime.now(timezone.utc) + timedelta(days=7)
+                }
+
+                new_access_token = create_token(
+                    {"sub": username, "role": user["role"]},
+                    expires_delta=timedelta(hours=1)
+                )
+
+                info_logger.info(f"✅ Refresh success for {username}")
+                return {
+                    "access_token": new_access_token,
+                    "refresh_token": new_refresh_token,
+                    "token_type": "bearer"
+                }
+
+        # 🚫 If no token matched after full search
+        info_logger.warning("🚫 Reused or invalid refresh token detected!")
+        raise HTTPException(status_code=401, detail="Invalid or expired refresh token")
+
+    except HTTPException as http_exc:
+        raise http_exc  # Let FastAPI return the correct status
+    except Exception as e:
+        error_logger.exception(f"❌ Crash in rotate_token: {str(e)}")
+        raise HTTPException(status_code=500, detail="Refresh crash")
+
+
+# 👤 Whoami Route (CLEAN & YELLOW-FREE)
 @router.get("/whoami")
-def whoami(user: dict = Depends(get_current_user)):
+@limit_safe("20/minute")
+async def whoami(request: Request, user: dict = Depends(get_current_user)):
     return {"message": f"You are {user['username']} with role {user['role']}"}

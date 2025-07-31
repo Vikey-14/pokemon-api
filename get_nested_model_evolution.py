@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel,Field
-from file_handler import load_pokedex
+from utils.file_handler import load_pokedex
 from typing import List,Dict,Optional,Union
 
 app=FastAPI()

@@ -29,7 +29,7 @@ from datetime import datetime
 import os, csv
 from io import StringIO
 
-from file_handler import load_pokedex, save_pokedex
+from utils.file_handler import load_pokedex, save_pokedex
 from auth.security import verify_token  # 🔒 Token-based protection
 
 router = APIRouter()

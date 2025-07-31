@@ -2,7 +2,7 @@ from fastapi import FastAPI,HTTPException,status,Path,Query
 from pydantic import BaseModel,Field
 from enum import Enum
 from typing import Dict,Optional,List,Union
-from file_handler import load_pokedex
+from utils.file_handler import load_pokedex
 
 
 

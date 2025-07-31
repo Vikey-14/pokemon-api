@@ -1,7 +1,9 @@
-from fastapi import APIRouter, UploadFile, File, Depends
+from fastapi import APIRouter, UploadFile, File, Depends, Request
 from fastapi.responses import HTMLResponse
-from auth.hybrid_auth import role_required  # 🔐 RBAC imported from here
-from custom_logger import info_logger, error_logger  # ✅ Import both loggers
+from utils.limiter_utils import limit_safe  # ✅ Safe limiter for testing
+from auth.hybrid_auth import role_required  # 🔐 Admin-only access
+from custom_logger import info_logger, error_logger
+from utils.file_utils import validate_file_upload
 from datetime import datetime
 from typing import List
 import os
@@ -9,94 +11,90 @@ import os
 router = APIRouter(tags=["Admin Actions"])
 
 UPLOAD_DIR = "uploads"
-ALLOWED_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif"}
-MAX_FILE_SIZE_MB = 2
 image_dir = os.path.join(UPLOAD_DIR, "images")
-os.makedirs(image_dir, exist_ok=True)
+os.makedirs(image_dir, exist_ok=True)  # ✅ Ensure parent dir exists at startup
 
 #️⃣ Upload a single secure image with validations + HTML preview
 @router.post("/upload/secure-image", summary="Secure Upload Pokémon Image", response_class=HTMLResponse)
+@limit_safe("3/minute")  # ✅ Test-safe limiter
 async def upload_pokemon_image(
+    request: Request, 
     file: UploadFile = File(...),
     current_user: dict = Depends(role_required("admin"))
 ):
-    if not file.content_type.startswith("image/"):
-        error_logger.error(f"❌ Invalid content type '{file.content_type}' uploaded by {current_user['username']}")
-        return HTMLResponse("<h3>❌ Only image files are allowed.</h3>", status_code=400)
+    try:
+        validate_file_upload(file)
+        content = await file.read()
+        filename = file.filename
 
-    ext = os.path.splitext(file.filename)[1].lower()
-    if ext not in ALLOWED_EXTENSIONS:
-        error_logger.error(f"❌ Unsupported extension '{ext}' by {current_user['username']}")
-        return HTMLResponse(f"<h3>❌ Unsupported file type: {ext}</h3>", status_code=400)
+        # 🕓 Rename if file already exists
+        if os.path.exists(os.path.join(image_dir, filename)):
+            name_part, ext = os.path.splitext(filename)
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = f"{name_part}_{timestamp}{ext}"
 
-    content = await file.read()
-    size_mb = len(content) / (1024 * 1024)
-    if size_mb > MAX_FILE_SIZE_MB:
-        error_logger.error(f"❌ Oversized file ({size_mb:.2f} MB) by {current_user['username']}")
-        return HTMLResponse(f"<h3>❌ File too large: {size_mb:.2f} MB</h3>", status_code=400)
+        # ✅ Ensure image directory exists inside test runs too
+        os.makedirs(image_dir, exist_ok=True)
 
-    filename = file.filename
-    if os.path.exists(os.path.join(image_dir, filename)):
-        name_part, ext = os.path.splitext(filename)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"{name_part}_{timestamp}{ext}"
+        # 💾 Save file
+        file_path = os.path.join(image_dir, filename)
+        with open(file_path, "wb") as f:
+            f.write(content)
 
-    file_path = os.path.join(image_dir, filename)
-    with open(file_path, "wb") as f:
-        f.write(content)
+        image_url = f"/uploads/images/{filename}"
+        info_logger.info(f"🛡️ Secure image '{file.filename}' uploaded by {current_user['username']} → saved as '{filename}'.")
 
-    image_url = f"/uploads/images/{filename}"
-    info_logger.info(f"🛡️ Secure image '{file.filename}' uploaded by {current_user['username']} → saved as '{filename}'.")
+        return HTMLResponse(f"""
+        <h2>✅ Image Uploaded by {current_user['username']}!</h2>
+        <ul>
+            <li><strong>Stored As:</strong> {filename}</li>
+            <li><strong>Preview URL:</strong> <a href="{image_url}" target="_blank">{image_url}</a></li>
+        </ul>
+        <img src="{image_url}" width="300" style="border:1px solid #999; border-radius:6px;" />
+        """)
 
-    return HTMLResponse(f"""
-    <h2>✅ Image Uploaded by {current_user['username']}!</h2>
-    <ul>
-        <li><strong>Stored As:</strong> {filename}</li>
-        <li><strong>Preview URL:</strong> <a href="{image_url}" target="_blank">{image_url}</a></li>
-    </ul>
-    <img src="{image_url}" width="300" style="border:1px solid #999; border-radius:6px;" />
-    """)
+    except Exception as e:
+        error_logger.error(f"❌ Upload failed: {str(e)}")
+        return HTMLResponse(f"<h3>❌ Upload failed: {str(e)}</h3>", status_code=400)
 
 
 #️⃣ Upload multiple images at once with validation
 @router.post("/upload/multi-image", summary="Upload Multiple Images", response_class=HTMLResponse)
+@limit_safe("2/minute")  # ✅ Test-safe limiter
 async def upload_multiple_images(
+    request: Request, 
     files: List[UploadFile] = File(...),
     current_user: dict = Depends(role_required("admin"))
 ):
     uploaded_files = []
 
     for file in files:
-        if not file.content_type.startswith("image/"):
-            error_logger.error(f"❌ Skipped file '{file.filename}': Invalid content type by {current_user['username']}")
-            continue
+        try:
+            validate_file_upload(file)
+            content = await file.read()
+            filename = file.filename
 
-        ext = os.path.splitext(file.filename)[1].lower()
-        if ext not in ALLOWED_EXTENSIONS:
-            error_logger.error(f"❌ Skipped file '{file.filename}': Unsupported extension '{ext}' by {current_user['username']}")
-            continue
+            if os.path.exists(os.path.join(image_dir, filename)):
+                name_part, ext = os.path.splitext(filename)
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                filename = f"{name_part}_{timestamp}{ext}"
 
-        content = await file.read()
-        size_mb = len(content) / (1024 * 1024)
-        if size_mb > MAX_FILE_SIZE_MB:
-            error_logger.error(f"❌ Skipped file '{file.filename}': Too large ({size_mb:.2f} MB) by {current_user['username']}")
-            continue
+            # ✅ Ensure image directory exists inside test runs too
+            os.makedirs(image_dir, exist_ok=True)
 
-        filename = file.filename
-        if os.path.exists(os.path.join(image_dir, filename)):
-            name_part, ext = os.path.splitext(filename)
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"{name_part}_{timestamp}{ext}"
+            file_path = os.path.join(image_dir, filename)
+            with open(file_path, "wb") as f:
+                f.write(content)
 
-        file_path = os.path.join(image_dir, filename)
-        with open(file_path, "wb") as f:
-            f.write(content)
+            size_mb = round(len(content) / (1024 * 1024), 2)
+            uploaded_files.append({
+                "new_name": filename,
+                "size": size_mb,
+                "url": f"/uploads/images/{filename}"
+            })
 
-        uploaded_files.append({
-            "new_name": filename,
-            "size": round(size_mb, 2),
-            "url": f"/uploads/images/{filename}"
-        })
+        except Exception as e:
+            error_logger.error(f"❌ Skipped file '{file.filename}': {str(e)}")
 
     if not uploaded_files:
         error_logger.error(f"❌ No valid image files uploaded by {current_user['username']}")

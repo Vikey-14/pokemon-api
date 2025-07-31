@@ -1,0 +1,308 @@
+[2025-07-26 11:44:43,561] [ERROR] POST /auth/refresh-token → 403: Not authenticated
+[2025-07-26 11:52:10,028] [ERROR] GET /whoami → 404: Not Found
+[2025-07-26 11:58:58,287] [ERROR] ❌ Invalid refresh token attempt: dde1680a-255b-4436-aa89-bc5b052524e7
+[2025-07-26 11:58:58,287] [ERROR] POST /auth/refresh-token → 401: Invalid or expired refresh token
+[2025-07-26 12:08:07,267] [ERROR] GET /auth/whoami → 403: Not authenticated
+[2025-07-26 12:08:07,283] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 12:08:07,284] [ERROR] GET /auth/whoami → 401: Invalid access token
+[2025-07-26 12:12:23,421] [ERROR] 🚫 Access denied – 'ashketchum' attempted 'admin' access
+[2025-07-26 12:12:23,421] [ERROR] POST /pokemon/ → 403: Forbidden: You are not authorized
+[2025-07-26 12:12:23,764] [ERROR] GET /pokemon/ → 403: Not authenticated
+[2025-07-26 12:12:23,797] [ERROR] GET /pokemon/type/Fire → 404: Not Found
+[2025-07-26 12:12:23,854] [ERROR] PATCH /pokemon/info/1 → 404: Not Found
+[2025-07-26 12:12:23,898] [ERROR] 🚫 Access denied – 'ashketchum' attempted 'admin' access
+[2025-07-26 12:12:23,899] [ERROR] DELETE /pokemon/1 → 403: Forbidden: You are not authorized
+[2025-07-26 12:29:09,021] [ERROR] 🚫 Access denied – 'ashketchum' attempted 'admin' access
+[2025-07-26 12:29:09,021] [ERROR] POST /pokemon/ → 403: Forbidden: You are not authorized
+[2025-07-26 12:29:09,398] [ERROR] GET /pokemon/ → 403: Not authenticated
+[2025-07-26 12:29:09,427] [ERROR] GET /pokemon/type/Fire → 404: Not Found
+[2025-07-26 12:29:09,496] [ERROR] PATCH /pokemon/info/1 → 404: Not Found
+[2025-07-26 12:29:09,555] [ERROR] 🚫 Access denied – 'ashketchum' attempted 'admin' access
+[2025-07-26 12:29:09,555] [ERROR] DELETE /pokemon/1 → 403: Forbidden: You are not authorized
+[2025-07-26 13:05:18,320] [ERROR] POST /login → 404: Not Found
+[2025-07-26 13:05:18,726] [ERROR] POST /login → 404: Not Found
+[2025-07-26 13:05:18,757] [ERROR] POST /login → 404: Not Found
+[2025-07-26 13:05:18,788] [ERROR] POST /login → 404: Not Found
+[2025-07-26 13:05:18,820] [ERROR] POST /login → 404: Not Found
+[2025-07-26 13:08:23,514] [ERROR] ❌ Login failed for user 'ashketchum' – Invalid credentials
+[2025-07-26 13:08:23,514] [ERROR] POST /auth/login → 401: Invalid credentials
+[2025-07-26 13:08:23,733] [ERROR] ❌ Login failed for user 'ashketchum' – Invalid credentials
+[2025-07-26 13:08:23,733] [ERROR] POST /auth/login → 401: Invalid credentials
+[2025-07-26 13:08:23,756] [ERROR] ❌ Login failed for user 'ashketchum' – Invalid credentials
+[2025-07-26 13:08:23,757] [ERROR] POST /auth/login → 401: Invalid credentials
+[2025-07-26 13:08:23,788] [ERROR] ❌ Login failed for user 'ashketchum' – Invalid credentials
+[2025-07-26 13:08:23,788] [ERROR] POST /auth/login → 401: Invalid credentials
+[2025-07-26 13:08:23,829] [ERROR] ❌ Login failed for user 'ashketchum' – Invalid credentials
+[2025-07-26 13:08:23,829] [ERROR] POST /auth/login → 401: Invalid credentials
+[2025-07-26 13:09:39,785] [ERROR] ❌ Add failed by ashketchum – ID 25 not in Pokédex
+[2025-07-26 13:09:39,785] [ERROR] POST /team/25 → 404: Invalid ID 25! Pokémon not found in Pokédex.
+[2025-07-26 13:09:40,078] [ERROR] ❌ Remove failed by ashketchum – ID 25 not in team
+[2025-07-26 13:09:40,078] [ERROR] DELETE /team/25 → 404: Cannot remove! Pokémon ID 25 is not in your team.
+[2025-07-26 13:09:40,152] [ERROR] ❌ Add failed by ashketchum – ID 7 already in team
+[2025-07-26 13:09:40,152] [ERROR] POST /team/7 → 409: Invalid ID 7! Pokémon already in the team.
+[2025-07-26 13:09:40,188] [ERROR] ❌ Remove failed by ashketchum – ID 150 not in team
+[2025-07-26 13:09:40,189] [ERROR] DELETE /team/150 → 404: Cannot remove! Pokémon ID 150 is not in your team.
+[2025-07-26 13:13:09,296] [ERROR] ❌ Add failed by ashketchum – ID 1 already in team
+[2025-07-26 13:13:09,297] [ERROR] POST /team/1 → 409: Invalid ID 1! Pokémon already in the team.
+[2025-07-26 13:13:09,328] [ERROR] ❌ Remove failed by ashketchum – ID 999 not in team
+[2025-07-26 13:13:09,328] [ERROR] DELETE /team/999 → 404: Cannot remove! Pokémon ID 999 is not in your team.
+[2025-07-26 13:23:14,017] [ERROR] POST /upload/csv → 400: ❌ File type '.txt' not allowed. Must be CSV or image only.
+[2025-07-26 13:23:14,080] [ERROR] ❌ File 'corrupt.csv' is not valid UTF-8. Uploaded by professoroak
+[2025-07-26 13:23:14,081] [ERROR] POST /upload/csv → 400: ❌ Invalid encoding. Only UTF-8 CSV files are allowed.
+[2025-07-26 13:23:14,123] [ERROR] 🚫 Access denied – 'ashketchum' attempted 'admin' access
+[2025-07-26 13:23:14,123] [ERROR] POST /upload/csv → 403: Forbidden: You are not authorized
+[2025-07-26 13:24:58,267] [ERROR] POST /upload/csv → 400: ❌ File type '.txt' not allowed. Must be CSV or image only.
+[2025-07-26 13:24:58,298] [ERROR] ❌ File 'corrupt.csv' is not valid UTF-8. Uploaded by professoroak
+[2025-07-26 13:24:58,298] [ERROR] POST /upload/csv → 400: ❌ Invalid encoding. Only UTF-8 CSV files are allowed.
+[2025-07-26 13:24:58,330] [ERROR] 🚫 Access denied – 'ashketchum' attempted 'admin' access
+[2025-07-26 13:24:58,330] [ERROR] POST /upload/csv → 403: Forbidden: You are not authorized
+[2025-07-26 13:28:46,035] [ERROR] POST /upload/csv-import → 403: Not authenticated
+[2025-07-26 13:29:52,827] [ERROR] POST /upload/csv-import → 403: Not authenticated
+[2025-07-26 20:47:34,790] [ERROR] POST /upload/csv-import → 403: Not authenticated
+[2025-07-26 21:19:31,349] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:19:31,349] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:19:31,799] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:19:31,799] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:19:31,841] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:19:31,841] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:21:02,955] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:21:02,955] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:21:03,205] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:21:03,205] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:21:03,229] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:21:03,235] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:40:51,460] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:40:51,746] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:40:51,762] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:42:40,910] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:42:40,918] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:42:41,217] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:42:41,217] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:42:41,249] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:42:41,249] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:43:59,517] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:43:59,517] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:43:59,886] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:43:59,886] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:43:59,920] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:43:59,920] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:46:17,342] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:46:17,342] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:46:17,648] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:46:17,648] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:46:17,673] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:46:17,673] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:49:09,266] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:49:09,266] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:50:43,961] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:50:43,976] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:50:44,229] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:50:44,229] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:50:44,276] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:50:44,276] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:54:13,189] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:54:13,189] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:54:13,471] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:54:13,471] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 21:54:13,503] [ERROR] ⛔ Access token decoding failed.
+[2025-07-26 21:54:13,508] [ERROR] POST /upload/image → 401: Invalid access token
+[2025-07-26 23:09:32,400] [ERROR] POST /upload/image → 400: ❌ File type '.txt' not allowed. Must be CSV or image only.
+[2025-07-26 23:21:42,993] [ERROR] 🚫 Forbidden: 'ashketchum' lacks 'admin' role
+[2025-07-26 23:21:42,993] [ERROR] POST /upload/secure-image → 403: Forbidden: You are not authorized
+[2025-07-26 23:21:43,337] [ERROR] 🚫 Forbidden: 'ashketchum' lacks 'admin' role
+[2025-07-26 23:21:43,347] [ERROR] POST /upload/secure-image → 403: Forbidden: You are not authorized
+[2025-07-26 23:21:43,428] [ERROR] 🚫 Forbidden: 'ashketchum' lacks 'admin' role
+[2025-07-26 23:21:43,432] [ERROR] POST /upload/multi-image → 403: Forbidden: You are not authorized
+[2025-07-26 23:21:43,500] [ERROR] 🚫 Forbidden: 'ashketchum' lacks 'admin' role
+[2025-07-26 23:21:43,500] [ERROR] POST /upload/multi-image → 403: Forbidden: You are not authorized
+[2025-07-26 23:23:12,016] [ERROR] 🚫 Forbidden: 'ashketchum' lacks 'admin' role
+[2025-07-26 23:23:12,016] [ERROR] POST /upload/secure-image → 403: Forbidden: You are not authorized
+[2025-07-26 23:23:12,368] [ERROR] 🚫 Forbidden: 'ashketchum' lacks 'admin' role
+[2025-07-26 23:23:12,368] [ERROR] POST /upload/secure-image → 403: Forbidden: You are not authorized
+[2025-07-26 23:23:12,436] [ERROR] 🚫 Forbidden: 'ashketchum' lacks 'admin' role
+[2025-07-26 23:23:12,436] [ERROR] POST /upload/multi-image → 403: Forbidden: You are not authorized
+[2025-07-26 23:23:12,514] [ERROR] 🚫 Forbidden: 'ashketchum' lacks 'admin' role
+[2025-07-26 23:23:12,514] [ERROR] POST /upload/multi-image → 403: Forbidden: You are not authorized
+[2025-07-26 23:40:32,837] [ERROR] ❌ Upload failed: 400: ❌ File type '.exe' not allowed. Must be CSV or image only.
+[2025-07-26 23:40:32,935] [ERROR] ❌ Skipped file 'bad.txt': 400: ❌ File type '.txt' not allowed. Must be CSV or image only.
+[2025-07-26 23:40:32,936] [ERROR] ❌ Skipped file 'script.exe': 400: ❌ File type '.exe' not allowed. Must be CSV or image only.
+[2025-07-26 23:40:32,936] [ERROR] ❌ No valid image files uploaded by professoroak
+[2025-07-26 23:41:51,143] [ERROR] GET /gallery → 401: Not authenticated
+[2025-07-26 23:45:08,939] [ERROR] 🚫 Forbidden: 'ashketchum' lacks 'admin' role
+[2025-07-26 23:45:08,943] [ERROR] POST /upload/secure-image → 403: Forbidden: You are not authorized
+[2025-07-26 23:45:08,964] [ERROR] POST /upload/secure-image → 403: Not authenticated
+[2025-07-26 23:48:30,064] [ERROR] 🚫 Forbidden: 'ashketchum' lacks 'admin' role
+[2025-07-26 23:48:30,066] [ERROR] POST /upload/secure-image → 403: Forbidden: You are not authorized
+[2025-07-26 23:48:30,095] [ERROR] POST /upload/secure-image → 403: Not authenticated
+[2025-07-26 23:49:26,774] [ERROR] GET /gallery → 401: Not authenticated
+[2025-07-26 23:49:27,208] [ERROR] 🚫 Forbidden: 'ashketchum' lacks 'admin' role
+[2025-07-26 23:49:27,208] [ERROR] POST /upload/secure-image → 403: Forbidden: You are not authorized
+[2025-07-26 23:49:27,223] [ERROR] GET /does-not-exist → 404: Not Found
+[2025-07-26 23:52:28,727] [ERROR] GET /gallery → 401: Not authenticated
+[2025-07-26 23:52:28,799] [ERROR] 🚫 Forbidden: 'ashketchum' lacks 'admin' role
+[2025-07-26 23:52:28,800] [ERROR] POST /upload/secure-image → 403: Forbidden: You are not authorized
+[2025-07-26 23:52:28,815] [ERROR] GET /does-not-exist → 404: Not Found
+[2025-07-26 23:53:56,574] [ERROR] GET /download/pokedex.csv → 404: Not Found
+[2025-07-26 23:53:56,809] [ERROR] GET /download/logs → 404: Not Found
+[2025-07-26 23:53:56,852] [ERROR] GET /download/image/test_img.png → 404: Not Found
+[2025-07-26 23:53:56,884] [ERROR] GET /download/image/fake.png → 404: Not Found
+[2025-07-26 23:55:24,319] [ERROR] GET /download/pokedex.csv → 404: Not Found
+[2025-07-26 23:55:24,602] [ERROR] GET /download/logs → 404: Not Found
+[2025-07-26 23:55:24,678] [ERROR] GET /download/image/test_img.png → 404: Not Found
+[2025-07-26 23:55:24,740] [ERROR] GET /download/image/fake.png → 404: Not Found
+[2025-07-27 00:48:23,260] [ERROR] GET /download/file/pokedex.csv → 404: Not Found
+[2025-07-27 00:48:23,568] [ERROR] GET /download/file/main.log → 404: Not Found
+[2025-07-27 00:48:23,626] [ERROR] GET /download/image/test_img.png → 404: Not Found
+[2025-07-27 00:48:23,670] [ERROR] GET /download/image/doesnotexist.png → 404: Not Found
+[2025-07-27 00:49:45,305] [ERROR] GET /download/pokedex.csv → 404: Not Found
+[2025-07-27 00:49:45,722] [ERROR] GET /download/main.log → 404: Not Found
+[2025-07-27 00:49:45,767] [ERROR] GET /download/image/test_img.png → 404: Not Found
+[2025-07-27 00:49:45,825] [ERROR] GET /download/image/fake.png → 404: Not Found
+[2025-07-27 01:02:50,916] [ERROR] GET /download/log → 404: File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:02:51,371] [ERROR] GET /uploads/images/does_not_exist.png → 404: Not Found
+[2025-07-27 01:05:31,150] [ERROR] GET /download/log → 404: File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:05:31,552] [ERROR] GET /uploads/images/does_not_exist.png → 404: Not Found
+[2025-07-27 01:05:31,606] [ERROR] GET /download/log → 404: File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:13:10,990] [ERROR] GET /download/log → 404: File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:13:11,369] [ERROR] ❌ Error downloading image 'does_not_exist.png': 404: File not found: C:\Users\user\Documents\fastapi_project\uploads\images\does_not_exist.png
+[2025-07-27 01:13:11,369] [ERROR] GET /download/image/does_not_exist.png → 500: Error downloading image.
+[2025-07-27 01:13:11,434] [ERROR] GET /download/log → 404: File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:16:28,777] [ERROR] ❌ Unexpected error downloading file 'log': 404: File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:16:28,777] [ERROR] GET /download/log → 500: Error downloading file.
+[2025-07-27 01:16:29,142] [ERROR] ❌ Error downloading image 'does_not_exist.png': 404: File not found: C:\Users\user\Documents\fastapi_project\uploads\images\does_not_exist.png
+[2025-07-27 01:16:29,142] [ERROR] GET /download/image/does_not_exist.png → 500: Error downloading image.
+[2025-07-27 01:16:29,187] [ERROR] ❌ Unexpected error downloading file 'log': 404: File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:16:29,188] [ERROR] GET /download/log → 500: Error downloading file.
+[2025-07-27 01:24:33,546] [ERROR] ❌ File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:24:33,546] [ERROR] GET /download/log → 404: Requested file not found.
+[2025-07-27 01:24:33,909] [ERROR] ❌ Image not found: C:\Users\user\Documents\fastapi_project\uploads\images\does_not_exist.png
+[2025-07-27 01:24:33,909] [ERROR] GET /download/image/does_not_exist.png → 404: Image not found.
+[2025-07-27 01:24:33,957] [ERROR] ❌ File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:24:33,957] [ERROR] GET /download/log → 404: Requested file not found.
+[2025-07-27 01:25:46,331] [ERROR] ❌ File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:25:46,332] [ERROR] GET /download/log → 404: Requested file not found.
+[2025-07-27 01:25:46,630] [ERROR] ❌ Image not found: C:\Users\user\Documents\fastapi_project\uploads\images\does_not_exist.png
+[2025-07-27 01:25:46,630] [ERROR] GET /download/image/does_not_exist.png → 404: Image not found.
+[2025-07-27 01:25:46,676] [ERROR] ❌ File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:25:46,676] [ERROR] GET /download/log → 404: Requested file not found.
+[2025-07-27 01:27:55,889] [ERROR] ❌ File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:27:55,890] [ERROR] GET /download/log → 404: Requested file not found.
+[2025-07-27 01:27:56,187] [ERROR] ❌ Image not found: C:\Users\user\Documents\fastapi_project\uploads\images\does_not_exist.png
+[2025-07-27 01:27:56,187] [ERROR] GET /download/image/does_not_exist.png → 404: Image not found.
+[2025-07-27 01:27:56,229] [ERROR] ❌ File not found: C:\Users\user\Documents\fastapi_project\uploads\log
+[2025-07-27 01:27:56,229] [ERROR] GET /download/log → 404: Requested file not found.
+[2025-07-27 01:35:58,944] [ERROR] ❌ Image not found: C:\Users\user\Documents\fastapi_project\uploads\images\does_not_exist.png
+[2025-07-27 01:35:58,945] [ERROR] GET /download/image/does_not_exist.png → 404: Image not found.
+[2025-07-27 01:35:58,984] [ERROR] ❌ Battle log not found: nonexistent_logs\battle_log.txt
+[2025-07-27 01:35:58,984] [ERROR] GET /download/log → 404: Battle log not found.
+[2025-07-27 01:38:18,647] [ERROR] ❌ Image not found: C:\Users\user\Documents\fastapi_project\uploads\images\does_not_exist.png
+[2025-07-27 01:38:18,655] [ERROR] GET /download/image/does_not_exist.png → 404: Image not found.
+[2025-07-27 01:38:18,699] [ERROR] ❌ Battle log not found: nonexistent_logs\battle_log.txt
+[2025-07-27 01:38:18,699] [ERROR] GET /download/log → 404: Battle log not found.
+[2025-07-27 20:01:35,532] [ERROR] ❌ Login failed for user 'ashketchum' – Invalid credentials
+[2025-07-27 20:01:35,615] [ERROR] ❌ Invalid refresh token attempt: 4265cbc2-7ae4-4d4a-89f3-0ec7b3df7054
+[2025-07-27 20:01:35,686] [ERROR] ⛔ Token decode error.
+[2025-07-28 01:39:07,131] [ERROR] ❌ Login failed for user 'ashketchum' – Invalid credentials
+[2025-07-28 01:39:07,209] [ERROR] ❌ Invalid refresh token attempt: f9035016-8fec-4a05-9294-53ca4eb3e76a
+[2025-07-28 01:39:07,261] [ERROR] ⛔ Token decode error.
+[2025-07-28 01:43:22,606] [ERROR] ⛔ Token decode error.
+[2025-07-28 01:46:24,092] [ERROR] ⛔ Token decode error.
+[2025-07-28 10:54:31,658] [ERROR] ⛔ Token decode error.
+[2025-07-28 11:06:53,760] [ERROR] ⛔ Token decode error.
+[2025-07-28 11:08:05,050] [ERROR] ⛔ Token decode error.
+[2025-07-28 11:12:33,127] [ERROR] ⛔ Token decode error.
+[2025-07-28 11:16:43,959] [ERROR] Login failed for 'ashketchum' – Invalid credentials
+[2025-07-28 11:16:44,051] [ERROR] Invalid refresh token
+[2025-07-28 11:19:41,953] [ERROR] Login failed for 'ashketchum' – Invalid credentials
+[2025-07-28 11:19:42,003] [ERROR] Invalid refresh token
+[2025-07-28 12:08:48,940] [ERROR] Login failed for 'ashketchum' – Invalid credentials
+[2025-07-28 12:08:49,032] [ERROR] Invalid refresh token
+[2025-07-28 18:17:22,647] [ERROR] Login failed for 'ashketchum' – Invalid credentials
+[2025-07-28 18:17:22,710] [ERROR] Invalid refresh token
+[2025-07-28 19:14:24,902] [ERROR] Invalid refresh token
+[2025-07-28 19:18:59,404] [ERROR] Login failed for 'ashketchum' – Invalid credentials
+[2025-07-28 19:18:59,404] [ERROR] POST /auth/login → 401: Invalid credentials
+[2025-07-28 19:18:59,481] [ERROR] Invalid refresh token
+[2025-07-28 19:18:59,481] [ERROR] POST /auth/refresh-token → 401: Invalid or expired refresh token
+[2025-07-28 19:18:59,541] [ERROR] GET /auth/whoami → 403: Not authenticated
+[2025-07-28 19:18:59,566] [ERROR] GET /auth/whoami → 401: Invalid access token
+[2025-07-28 19:19:00,263] [ERROR] POST /upload/secure-image → 403: Forbidden: You are not authorized
+[2025-07-28 19:19:00,313] [ERROR] POST /upload/secure-image → 403: Not authenticated
+[2025-07-28 19:19:00,425] [ERROR] GET /gallery → 401: Not authenticated
+[2025-07-28 19:19:00,493] [ERROR] POST /upload/secure-image → 403: Forbidden: You are not authorized
+[2025-07-28 19:19:00,516] [ERROR] GET /does-not-exist → 404: Not Found
+[2025-07-28 19:19:01,465] [ERROR] GET /gallery → 401: Not authenticated
+[2025-07-28 19:19:01,955] [ERROR] POST /upload/csv → 403: Forbidden: You are not authorized
+[2025-07-28 19:19:02,205] [ERROR] POST /upload/csv-import → 403: Not authenticated
+[2025-07-28 20:42:56,989] [ERROR] Login failed for 'ashketchum' – Invalid credentials
+[2025-07-28 20:42:57,081] [ERROR] Invalid refresh token
+[2025-07-28 21:01:29,248] [ERROR] ❌ Image not found: C:\Users\user\Documents\fastapi_project\uploads\images\does_not_exist.png
+[2025-07-28 21:01:29,297] [ERROR] ❌ Battle log not found: nonexistent_logs\battle_log.txt
+[2025-07-28 21:41:19,347] [ERROR] ❌ Server error saving file 'hello.txt' by 'ashketchum': 'Settings' object has no attribute 'TESTING'
+[2025-07-28 21:41:19,677] [ERROR] ❌ Error previewing file 'data.csv' by 'ashketchum': 'Settings' object has no attribute 'TESTING'
+[2025-07-28 21:41:19,734] [ERROR] ❌ Error previewing file 'test.png' by 'ashketchum': 'Settings' object has no attribute 'TESTING'
+[2025-07-28 21:46:28,107] [ERROR] ❌ Server error saving file 'hello.txt' by 'ashketchum': 'Settings' object has no attribute 'TESTING'
+[2025-07-28 21:46:28,409] [ERROR] ❌ Error previewing file 'data.csv' by 'ashketchum': 'Settings' object has no attribute 'TESTING'
+[2025-07-28 21:46:28,485] [ERROR] ❌ Error previewing file 'test.png' by 'ashketchum': 'Settings' object has no attribute 'TESTING'
+[2025-07-30 20:26:31,391] [ERROR] ❌ Crash in login_user: 401: Invalid credentials
+Traceback (most recent call last):
+  File "C:\Users\user\Documents\fastapi_project\auth\hybrid_auth.py", line 91, in login_user
+    raise HTTPException(status_code=401, detail="Invalid credentials")
+fastapi.exceptions.HTTPException: 401: Invalid credentials
+[2025-07-30 20:42:28,072] [ERROR] ❌ Crash in rotate_token: 401: Invalid or expired refresh token
+Traceback (most recent call last):
+  File "C:\Users\user\Documents\fastapi_project\auth\hybrid_auth.py", line 181, in rotate_token
+    raise HTTPException(status_code=401, detail="Invalid or expired refresh token")
+fastapi.exceptions.HTTPException: 401: Invalid or expired refresh token
+[2025-07-30 20:53:41,065] [ERROR] ❌ JWT decode failed: Not enough segments
+[2025-07-30 21:00:02,458] [ERROR] ❌ JWT decode failed: Not enough segments
+[2025-07-30 21:30:43,500] [ERROR] ❌ Image not found: C:\Users\user\Documents\fastapi_project\uploads\images\does_not_exist.png
+[2025-07-30 21:30:43,551] [ERROR] ❌ Battle log not found: nonexistent_logs\battle_log.txt
+[2025-07-30 21:50:45,332] [ERROR] ❌ Image not found: C:\Users\user\Documents\fastapi_project\uploads\images\does_not_exist.png
+[2025-07-30 21:50:45,361] [ERROR] ❌ Battle log not found: nonexistent_logs\battle_log.txt
+[2025-07-30 22:19:49,448] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 1 not in team
+[2025-07-30 22:19:49,531] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 22:30:20,709] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 1 not in team
+[2025-07-30 22:30:20,754] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 22:30:28,791] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 1 not in team
+[2025-07-30 22:30:28,958] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 22:39:50,235] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 1 not in team
+[2025-07-30 22:39:50,297] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 22:44:30,941] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 1 not in team
+[2025-07-30 22:44:31,006] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 22:51:39,205] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 1 not in team
+[2025-07-30 22:51:39,257] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 22:54:05,373] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 1 not in team
+[2025-07-30 22:54:05,680] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 22:58:11,055] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 23:01:44,723] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 23:04:17,715] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 23:08:08,947] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 23:22:37,220] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 23:25:02,134] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-30 23:40:40,871] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-31 00:24:51,169] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-31 00:54:03,940] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-31 01:04:47,142] [ERROR] ❌ File 'corrupt.csv' is not valid UTF-8. Uploaded by professoroak
+[2025-07-31 01:09:13,222] [ERROR] ❌ File 'corrupt.csv' is not valid UTF-8. Uploaded by professoroak
+[2025-07-31 01:16:34,349] [ERROR] ❌ Upload failed: [Errno 2] No such file or directory: 'uploads\\images\\secure_pikachu.png'
+[2025-07-31 01:16:34,689] [ERROR] ❌ Upload failed: 400: ❌ File type '.exe' not allowed. Must be CSV or image only.
+[2025-07-31 01:16:34,757] [ERROR] ❌ Skipped file 'img1.png': [Errno 2] No such file or directory: 'uploads\\images\\img1.png'
+[2025-07-31 01:16:34,757] [ERROR] ❌ Skipped file 'img2.jpg': [Errno 2] No such file or directory: 'uploads\\images\\img2.jpg'
+[2025-07-31 01:16:34,757] [ERROR] ❌ No valid image files uploaded by professoroak
+[2025-07-31 01:16:34,840] [ERROR] ❌ Skipped file 'bad.txt': 400: ❌ File type '.txt' not allowed. Must be CSV or image only.
+[2025-07-31 01:16:34,840] [ERROR] ❌ Skipped file 'script.exe': 400: ❌ File type '.exe' not allowed. Must be CSV or image only.
+[2025-07-31 01:16:34,840] [ERROR] ❌ No valid image files uploaded by professoroak
+[2025-07-31 01:20:10,152] [ERROR] ❌ Upload failed: 400: ❌ File type '.exe' not allowed. Must be CSV or image only.
+[2025-07-31 01:20:10,262] [ERROR] ❌ Skipped file 'bad.txt': 400: ❌ File type '.txt' not allowed. Must be CSV or image only.
+[2025-07-31 01:20:10,262] [ERROR] ❌ Skipped file 'script.exe': 400: ❌ File type '.exe' not allowed. Must be CSV or image only.
+[2025-07-31 01:20:10,262] [ERROR] ❌ No valid image files uploaded by professoroak
+[2025-07-31 01:28:00,376] [ERROR] ❌ JWT decode failed: Not enough segments
+[2025-07-31 01:28:00,848] [ERROR] ❌ Image not found: C:\Users\user\Documents\fastapi_project\uploads\images\does_not_exist.png
+[2025-07-31 01:28:00,913] [ERROR] ❌ Battle log not found: nonexistent_logs\battle_log.txt
+[2025-07-31 01:28:02,284] [ERROR] ❌ Remove failed by {'username': 'ashketchum', 'role': 'trainer'} – ID 999 not in team
+[2025-07-31 01:28:02,925] [ERROR] ❌ File 'corrupt.csv' is not valid UTF-8. Uploaded by professoroak
+[2025-07-31 01:28:04,017] [ERROR] ❌ Upload failed: 400: ❌ File type '.exe' not allowed. Must be CSV or image only.
+[2025-07-31 01:28:04,314] [ERROR] ❌ Skipped file 'bad.txt': 400: ❌ File type '.txt' not allowed. Must be CSV or image only.
+[2025-07-31 01:28:04,329] [ERROR] ❌ Skipped file 'script.exe': 400: ❌ File type '.exe' not allowed. Must be CSV or image only.
+[2025-07-31 01:28:04,338] [ERROR] ❌ No valid image files uploaded by professoroak

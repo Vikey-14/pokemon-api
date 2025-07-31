@@ -23,7 +23,7 @@ class LoggingMiddleware(BaseHTTPMiddleware):
         try:
             response = await call_next(request)
             status_code = response.status_code
-        except Exception as e:
+        except Exception:
             status_code = 500
             response = None
 
@@ -54,9 +54,10 @@ class LoggingMiddleware(BaseHTTPMiddleware):
             f"Status: {status_code} | ⏱️ {duration}s\n"
         )
 
-        # 💾 Save log to file
+        # 💾 Save log to file with utf-8 to avoid UnicodeEncodeError
         log_path = os.path.join(LOG_DIR, LOG_FILE)
-        with open(log_path, "a") as f:
+        with open(log_path, "a", encoding="utf-8") as f:
             f.write(log_entry)
 
+        # 🛑 If error, return fallback response
         return response if response else PlainTextResponse("Internal Server Error", status_code=500)

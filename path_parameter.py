@@ -1,7 +1,7 @@
 from fastapi import FastAPI,Path,status,HTTPException
 from pydantic import BaseModel,Field
 from typing import Optional,List,Dict
-from file_handler import load_pokedex
+from utils.file_handler import load_pokedex
 
 app=FastAPI()
 

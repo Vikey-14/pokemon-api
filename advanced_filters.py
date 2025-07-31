@@ -1,6 +1,6 @@
 from fastapi import Query, FastAPI
 from typing import Optional,Dict,List
-from file_handler import load_pokedex
+from utils.file_handler import load_pokedex
 from pydantic import BaseModel,Field
 
 
