@@ -33,7 +33,8 @@ COPY templates/ templates/
 COPY static/ static/
 
 # 📂 JSON data (Pokedex, team data, etc.)
-COPY data/ data/
+COPY data/pokedex.json data/
+COPY data/team.json data/
 
 # 🔐 Load environment config (from CI or fallback local)
 COPY .env.prod.ci .env

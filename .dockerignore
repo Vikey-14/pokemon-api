@@ -1,4 +1,7 @@
-# 🔒 Secrets (Never include real local env files)
+# ------------------------------------------------------------------
+# 🔐 Secrets (Never include real local env files)
+# ------------------------------------------------------------------
+
 .env                  # ⛔ Ignore default local .env
 !.env.prod            # ✅ Allow production env for Docker builds
 !.env.prod.ci         # ✅ Allow CI env used in GitHub Actions
@@ -7,35 +10,59 @@
 # ⚠️ DO NOT use this — would block required files
 # .env.*              # ❌ Would block .env.prod / .env.prod.ci
 
+
+# ------------------------------------------------------------------
 # 🧪 Tests & Coverage
+# ------------------------------------------------------------------
+
 tests/
 .pytest_cache/
 *.test.json
 htmlcov/
 .coverage
 
+
+# ------------------------------------------------------------------
 # 🐍 Python Cache
+# ------------------------------------------------------------------
+
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# 📁 Local Runtime Files
-*.db
-*.sqlite3
-*.log
+
+# ------------------------------------------------------------------
+# 📁 Runtime Data & Uploads (Allow specific files before blocking)
+# ------------------------------------------------------------------
+
+# ✅ Allow only essential runtime files
+!data/pokedex.json
+!data/team.json
+!logs/.gitkeep
+
+# ❌ Then block everything else in those folders
 logs/
 uploads/
 gallery/
 data/
+*.log
 
+
+# ------------------------------------------------------------------
 # 🧠 IDE/Editor Configs
+# ------------------------------------------------------------------
+
 .idea/
 .vscode/
 .spyderproject
 .spyproject
 
+
+# ------------------------------------------------------------------
 # 🧪 Virtual Environments
+# ------------------------------------------------------------------
+
 env/
 venv/
 .venv/
@@ -43,17 +70,28 @@ ENV/
 env.bak/
 venv.bak/
 
+
+# ------------------------------------------------------------------
 # 📦 Build Artifacts
+# ------------------------------------------------------------------
+
 build/
 dist/
 *.egg-info/
 .eggs/
 
-# 🐳 Docker Config (Overrides Only)
+
+# ------------------------------------------------------------------
+# 🐳 Docker Overrides
+# ------------------------------------------------------------------
+
 docker-compose.override.yml
 
+
+# ------------------------------------------------------------------
 # 📚 Archives & Compressed Packages
+# ------------------------------------------------------------------
+
 *.zip
 *.tar
 *.gz
-
