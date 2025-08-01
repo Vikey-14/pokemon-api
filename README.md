@@ -19,6 +19,9 @@
     <img src="https://img.shields.io/website?url=https%3A%2F%2Fpokevcenter.duckdns.org&style=flat-square&label=Live&logo=vercel&color=brightgreen" alt="Live Site Status">
   </a>
 
+  <!-- 🔐 HTTPS secured with Caddy -->
+  <img src="https://img.shields.io/badge/Caddy-HTTPS%20Enabled-brightgreen?style=flat-square&logo=letsencrypt" alt="HTTPS via Caddy">
+
   <!-- 🐍 Python + FastAPI + License + Coverage -->
   <img src="https://img.shields.io/badge/Python-3.12-blue?style=flat-square&logo=python" alt="Python Version">
   <img src="https://img.shields.io/badge/FastAPI-%E2%9A%A1-green?style=flat-square&logo=fastapi" alt="FastAPI">
@@ -27,6 +30,7 @@
     <img src="https://coveralls.io/repos/github/Vikey-14/pokemon-api/badge.svg?branch=main&style=flat-square" alt="Coverage Status">
   </a>
 </p>
+
 
 # 🧪 PokéCenter API — FastAPI Project
 
