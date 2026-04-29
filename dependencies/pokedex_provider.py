@@ -4,27 +4,40 @@ from utils.file_handler import load_pokedex
 from config import settings
 from custom_logger import error_logger
 
+
+def _pdx_bc(event: str, **fields) -> None:
+    try:
+        parts = " ".join(f"{k}={repr(v)}" for k, v in fields.items())
+        print(f"[PDX_BC] {event}" + (f" {parts}" if parts else ""), flush=True)
+    except Exception as e:
+        print(f"[PDX_BC] {event} breadcrumb_error={type(e).__name__}:{e}", flush=True)
+
 # 🔹 For /pokemon routes (string keys)
 def get_pokedex_data():
+    _pdx_bc("PDX_ENTER")
+
     try:
-        raw_pokedex = load_pokedex()
-        formatted = {}
+        _pdx_bc("PDX_BEFORE_LOAD_POKEDEX")
+        pokedex = load_pokedex()
 
-        for poke_id, entry in raw_pokedex.items():
-            str_id = str(poke_id)  # 🔁 Force string key
-            formatted[str_id] = {
-                "name": entry.get("name"),
-                "level": entry.get("level"),
-                "ptype": entry.get("ptype"),
-                "nickname": entry.get("nickname") or None,
-                "id": int(entry.get("id", poke_id))  # Fallback if "id" missing
-            }
+        _pdx_bc(
+            "PDX_AFTER_LOAD_POKEDEX",
+            pokedex_type=type(pokedex).__name__,
+            pokedex_len=len(pokedex) if hasattr(pokedex, "__len__") else None,
+        )
 
-        return formatted
+        if not isinstance(pokedex, dict):
+            raise TypeError(f"Expected dict from load_pokedex(), got {type(pokedex).__name__}")
+
+        _pdx_bc("PDX_RETURN_OK")
+        return pokedex
 
     except Exception as e:
-        if not settings.TESTING:
-            error_logger.error(f"❌ CRASH in get_pokedex_data(): {e}", exc_info=True)
+        _pdx_bc(
+            "PDX_ERR",
+            err_type=type(e).__name__,
+            err=str(e),
+        )
         raise
 
 
