@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks, Request
-from typing import List
+from typing import List, Any
 from dependencies.pokedex_provider import get_pokedex_data
 from utils.file_handler import save_pokedex, load_pokedex
 from audit_logger import log_pokemon_addition
@@ -8,29 +8,90 @@ from auth.hybrid_auth import get_current_user, role_required
 from utils.limiter_utils import limit_safe
 from models.pokemon_model import Pokemon, PatchPokemon
 
+
+def _poke_bc(event: str, **fields) -> None:
+    try:
+        parts = " ".join(f"{k}={repr(v)}" for k, v in fields.items())
+        print(f"[POKE_BC] {event}" + (f" {parts}" if parts else ""), flush=True)
+    except Exception as e:
+        print(f"[POKE_BC] {event} breadcrumb_error={type(e).__name__}:{e}", flush=True)
+
+
 router = APIRouter(prefix="/pokemon", tags=["Trainer View"])
+
 
 # ✅ GET all Pokémon
 @router.get("/", response_model=List[Pokemon], response_model_by_alias=False)
 @limit_safe("10/minute")
-async def get_all_pokemon(request: Request, current_user: str = Depends(get_current_user)):
-    pokedex = load_pokedex()
+async def get_all_pokemon(
+    request: Request,
+    pokedex=Depends(get_pokedex_data),
+    current_user: dict = Depends(get_current_user),
+):
+    _poke_bc("POKE_LIST_ENTER", user=current_user.get("username"), role=current_user.get("role"))
+
     result = []
 
-    for pid, data in pokedex.items():
-        # 🧠 Ensure every Pokémon has a valid integer ID
-        fixed_data = data.copy()
-        fixed_data["id"] = int(pid)
+    try:
+        _poke_bc(
+            "POKE_LIST_SOURCE_READY",
+            pokedex_type=type(pokedex).__name__,
+            pokedex_len=len(pokedex) if hasattr(pokedex, "__len__") else None,
+        )
 
-        # 🧠 Ensure nickname key exists
-        if "nickname" not in fixed_data:
-            fixed_data["nickname"] = None
+        for pid, data in pokedex.items():
+            try:
+                _poke_bc("POKE_LIST_ITEM_BEGIN", pid=pid, raw=data)
 
-        # ✅ Validate and append
-        pokemon = Pokemon.model_validate(fixed_data)
-        result.append(pokemon)
+                if not isinstance(data, dict):
+                    raise TypeError(f"Entry for pid {pid} is not a dict")
 
-    return result
+                fixed_data = data.copy()
+
+                # Always normalize id
+                fixed_data["id"] = int(fixed_data.get("id", pid))
+
+                # Support both old and new naming styles
+                if "name" not in fixed_data and "poke_name" in fixed_data:
+                    fixed_data["name"] = fixed_data.get("poke_name")
+                if "poke_name" not in fixed_data and "name" in fixed_data:
+                    fixed_data["poke_name"] = fixed_data.get("name")
+
+                # Normalize nickname
+                fixed_data["nickname"] = fixed_data.get("nickname") or None
+
+                # Normalize level if it came as text
+                if fixed_data.get("level") is not None:
+                    fixed_data["level"] = int(fixed_data["level"])
+
+                pokemon = Pokemon.model_validate(fixed_data)
+                result.append(pokemon)
+
+                _poke_bc("POKE_LIST_ITEM_OK", pid=pid, normalized=fixed_data)
+
+            except Exception as e:
+                _poke_bc(
+                    "POKE_LIST_ITEM_ERR",
+                    pid=pid,
+                    raw=data,
+                    err_type=type(e).__name__,
+                    err=str(e),
+                )
+                raise HTTPException(
+                    status_code=500,
+                    detail=f"Pokémon list failed at id {pid}: {type(e).__name__}: {e}",
+                )
+
+        _poke_bc("POKE_LIST_OK", count=len(result))
+        return result
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        _poke_bc("POKE_LIST_ERR", err_type=type(e).__name__, err=str(e))
+        raise HTTPException(status_code=500, detail="Pokémon list crash")
+    
+    
 
 # ✅ ADD new Pokémon
 @router.post("/", status_code=status.HTTP_201_CREATED)
