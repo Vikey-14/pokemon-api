@@ -22,7 +22,6 @@ router = APIRouter(prefix="/pokemon", tags=["Trainer View"])
 
 # ✅ GET all Pokémon
 @router.get("/", response_model=List[Pokemon], response_model_by_alias=False)
-@limit_safe("10/minute")
 async def get_all_pokemon(
     request: Request,
     pokedex=Depends(get_pokedex_data),
