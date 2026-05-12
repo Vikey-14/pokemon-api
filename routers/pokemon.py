@@ -90,6 +90,71 @@ async def get_all_pokemon(
         _poke_bc("POKE_LIST_ERR", err_type=type(e).__name__, err=str(e))
         raise HTTPException(status_code=500, detail="Pokémon list crash")
     
+
+
+@router.get("/{pokemon_id}", response_model=Pokemon, response_model_by_alias=False)
+async def get_pokemon_by_id(
+    request: Request,
+    pokemon_id: int,
+    pokedex=Depends(get_pokedex_data),
+    current_user: dict = Depends(get_current_user),
+):
+    _poke_bc(
+        "POKE_GET_BY_ID_ENTER",
+        pokemon_id=pokemon_id,
+        user=current_user.get("username"),
+        role=current_user.get("role"),
+    )
+
+    try:
+        lookup_key = None
+        if pokemon_id in pokedex:
+            lookup_key = pokemon_id
+        elif str(pokemon_id) in pokedex:
+            lookup_key = str(pokemon_id)
+
+        _poke_bc(
+            "POKE_GET_BY_ID_LOOKUP",
+            pokemon_id=pokemon_id,
+            pokedex_keys=list(pokedex.keys())[:20] if hasattr(pokedex, "keys") else None,
+            resolved_key=lookup_key,
+        )
+
+        if lookup_key is None:
+            raise HTTPException(status_code=404, detail="Pokemon not found")
+
+        data = pokedex[lookup_key]
+        if not isinstance(data, dict):
+            raise TypeError(f"Entry for pokemon_id {pokemon_id} is not a dict")
+
+        fixed_data = data.copy()
+        fixed_data["id"] = int(fixed_data.get("id", pokemon_id))
+
+        if "name" not in fixed_data and "poke_name" in fixed_data:
+            fixed_data["name"] = fixed_data.get("poke_name")
+        if "poke_name" not in fixed_data and "name" in fixed_data:
+            fixed_data["poke_name"] = fixed_data.get("name")
+
+        fixed_data["nickname"] = fixed_data.get("nickname") or None
+
+        if fixed_data.get("level") is not None:
+            fixed_data["level"] = int(fixed_data["level"])
+
+        pokemon = Pokemon.model_validate(fixed_data)
+
+        _poke_bc("POKE_GET_BY_ID_OK", pokemon_id=pokemon_id, normalized=fixed_data)
+        return pokemon
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        _poke_bc(
+            "POKE_GET_BY_ID_ERR",
+            pokemon_id=pokemon_id,
+            err_type=type(e).__name__,
+            err=str(e),
+        )
+        raise HTTPException(status_code=500, detail=f"Pokemon fetch failed: {type(e).__name__}: {e}")
     
 
 # ✅ ADD new Pokémon
@@ -135,14 +200,20 @@ async def update_pokemon(
     pokedex=Depends(get_pokedex_data),
     current_user: str = Depends(role_required("admin"))
 ):
-    str_id = str(pokemon_id)
-    print("🧠 PATCH lookup ID:", str_id)
-    print("🧠 Current pokedex keys:", list(pokedex.keys()))
+    lookup_key = None
+    if pokemon_id in pokedex:
+        lookup_key = pokemon_id
+    elif str(pokemon_id) in pokedex:
+        lookup_key = str(pokemon_id)
 
-    if str_id not in pokedex:
+    print("🧠 PATCH lookup ID:", pokemon_id)
+    print("🧠 Current pokedex keys:", list(pokedex.keys()))
+    print("🧠 PATCH resolved key:", lookup_key)
+
+    if lookup_key is None:
         raise HTTPException(status_code=404, detail="Pokemon not found")
 
-    pokemon = pokedex[str_id]
+    pokemon = pokedex[lookup_key]
 
     # 🛠️ Apply partial updates
     if updated_data.level is not None:
@@ -172,12 +243,20 @@ async def delete_pokemon(
     pokedex=Depends(get_pokedex_data),
     current_user: str = Depends(role_required("admin"))
 ):
-    str_id = str(pokemon_id)
+    lookup_key = None
+    if pokemon_id in pokedex:
+        lookup_key = pokemon_id
+    elif str(pokemon_id) in pokedex:
+        lookup_key = str(pokemon_id)
 
-    if str_id not in pokedex:
+    print("🧠 DELETE lookup ID:", pokemon_id)
+    print("🧠 Current pokedex keys:", list(pokedex.keys()))
+    print("🧠 DELETE resolved key:", lookup_key)
+
+    if lookup_key is None:
         raise HTTPException(status_code=404, detail="Pokemon not found")
 
-    deleted = pokedex.pop(str_id)
+    deleted = pokedex.pop(lookup_key)
     save_pokedex(pokedex)
 
     info_logger.info(f"🗑️ '{deleted['name']}' [ID {pokemon_id}] deleted by {current_user}")
