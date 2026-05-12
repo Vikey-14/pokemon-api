@@ -170,6 +170,7 @@ def create_token(data: dict, expires_delta: timedelta) -> str:
 
 # 🔓 Login Route
 @router.post("/login")
+@limit_safe("5/minute")
 async def login_user(request: Request, login: LoginInput):
     _auth_bc(
         "AUTH_LOGIN_ENTER",
